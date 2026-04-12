@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ME100 Intillifresh Flush Sense | Kamron Soltani</title>
+  <meta name="description" content="ME100 Intillifresh Flush Sense: ESP32 IoT restroom air freshener with presence, flush detection, and email alerts." />
+  <link rel="stylesheet" href="styles.css?v=hero113" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kamron Soltani</a>
+      <button class="menu-button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="design-engineering.html">Design & Engineering</a>
+        <a href="photography.html">Film Photography</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article class="section">
+      <div class="container project-detail">
+        <p class="project-back"><a class="text-link" href="design-engineering.html#project-me100-intillifresh">← Back to Design &amp; Engineering</a></p>
+        <h1>ME100: Intillifresh Flush Sense</h1>
+        <p class="project-meta">2023 · ME100 · ESP32 · IoT</p>
+        <p class="section-lead">ME100 capstone: a playful smart air freshener that senses presence and flushes, tracks consumable level, and nudges better restroom habits with IoT feedback.</p>
+        <div class="project-content-split" data-project-lightbox>
+          <div class="project-content-primary">
+            <div class="project-hero-text-match" aria-label="Project photo">
+              <button
+                type="button"
+                class="project-hero-main project-hero-lightbox-trigger"
+                aria-label="Open large photo with caption"
+                data-caption="Intillifresh: overview."
+              >
+                <img
+                  src="assets/design/ME100%20Intilliflishsense/me1001.png"
+                  alt="ME100 Intillifresh"
+                  width="1600"
+                  height="1200"
+                  loading="eager"
+                  decoding="async"
+                />
+              </button>
+            </div>
+            <div class="project-body">
+              <h2>Background</h2>
+              <p>
+                For the <strong>ME100</strong> final project, our team built a smart air freshener that makes shared restrooms more hygienic, and more honest about maintenance. The device detects occupants, infers flushes from handle motion, monitors spray level, and uses LEDs and sound when behavior or supply needs attention.
+              </p>
+              <h2>Hardware</h2>
+              <p>
+                The stack blends analog and digital I/O: an <strong>ultrasonic</strong> rangefinder for distance, an <strong>IMU</strong> for flush events from handle motion, a <strong>load cell</strong> with <strong>HX711</strong> to weigh the canister, LEDs for status, and actuators for dispensing. Integrating <strong>MicroPython</strong> with the IMU took extra iteration, and we burned a few boards stress-testing the servo path, typical ME100 war stories.
+              </p>
+              <h2>Connectivity</h2>
+              <p>
+                An <strong>ESP32</strong> adds network connectivity so facilities (or housemates) get email when fluid runs low or a stall goes unflushed. The result is part appliance, part gentle accountability layer, still a bit whimsical, but grounded in real sensing and reliability work.
+              </p>
+            </div>
+          </div>
+          <div class="project-gallery-stack">
+            <aside class="project-gallery-aside" aria-label="Project image gallery">
+              <div class="project-gallery-grid project-gallery-grid--stack">
+                <button type="button" class="project-gallery-tile project-gallery-tile--land" aria-label="Open photo: me1002">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/ME100%20Intilliflishsense/me1002.png" alt="" width="1200" height="900" loading="lazy" decoding="async" data-caption="Hardware / enclosure." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--sq" aria-label="Open photo: me1003">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/ME100%20Intilliflishsense/me1003.png" alt="" width="900" height="900" loading="lazy" decoding="async" data-caption="Detail." />
+                  </span>
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p class="site-footer-copy">&copy; <span id="year"></span> Kamron Soltani</p>
+      <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
+    </div>
+  </footer>
+  <script src="script.js?v=hero113"></script>
+</body>
+</html>

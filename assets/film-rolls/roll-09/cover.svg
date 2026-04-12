@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Placeholder: add film scans">
+  <rect width="800" height="600" fill="#e8e0d4"/>
+  <rect x="40" y="40" width="720" height="520" fill="none" stroke="#a08068" stroke-width="2" stroke-dasharray="12 8"/>
+  <text x="400" y="280" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" fill="#5e3921">Film roll placeholder</text>
+  <text x="400" y="320" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#7a5c45">Add scans to this roll folder and update film-archive.json</text>
+</svg>

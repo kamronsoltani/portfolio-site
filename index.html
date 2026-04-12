@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamron Soltani | Portfolio</title>
+  <meta
+    name="description"
+    content="Kamron Soltani, mechanical engineering graduate student at UC Berkeley. Mechatronics, controls, wearables, and human centered design."
+  />
+  <link rel="stylesheet" href="styles.css?v=hero113" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kamron Soltani</a>
+      <button class="menu-button" aria-expanded="false" aria-controls="main-nav">
+        Menu
+      </button>
+      <nav id="main-nav" class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Design & Engineering</a>
+        <a href="#photography">Film Photography</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section id="about" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy hero-panel">
+            <div class="hero-peek" id="heroPeek" aria-hidden="true">
+              <img id="heroPeekImg" alt="" width="160" height="160" decoding="async" draggable="false" />
+            </div>
+            <h1>
+              Hi, I&rsquo;m
+              <span
+                class="hero-name-hit"
+                id="heroNameHit"
+                role="button"
+                tabindex="0"
+                aria-label="Kamron: tap for a peek, or press and hold"
+              >Kamron</span>!
+            </h1>
+            <p>
+              I&rsquo;m a graduate student at <strong>UC Berkeley</strong> pursuing an M.S. in Mechanical Engineering (B.S., MechE, May&nbsp;2025). My work sits at the intersection of <strong>mechatronics</strong>, <strong>product design</strong>, and physical systems, especially wearables and consumer devices.
+            </p>
+            <p>
+              I teach as a GSI for <strong>ME235</strong> Microprocessor Based Mechanical Systems (Dr.&nbsp;George Anwar), consult on water infrastructure with <strong>Mangrove Water</strong>, and research reconfigurable wearables in the <strong>Morphing Matters Lab</strong> (Dr.&nbsp;Lining Yao).
+            </p>
+            <p>
+              Off the clock: Sacramento Kings fan, transit nerd, Van Hool AG300 enthusiast, sourdough baker, and Lego builder. This site also hosts my <strong>film photography</strong>.
+            </p>
+            
+          </div>
+
+          <aside class="hero-showcase hero-panel" aria-label="Featured work">
+            <p class="eyebrow">Featured</p>
+            <div
+              class="hero-slideshow"
+              id="heroSlideshow"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Featured design and film photography"
+              tabindex="0"
+            >
+              <div class="hero-slideshow-viewport">
+                <a class="hero-slide-link" id="heroSlideLink" href="project-mangrove-water.html">
+                  <div class="hero-slide-media" id="heroSlideMedia">
+                    <span class="hero-slide-placeholder" id="heroSlidePlaceholder">Mangrove</span>
+                  </div>
+                  <div class="hero-slide-meta">
+                    <span class="hero-slide-title" id="heroSlideTitle">Mangrove Water</span>
+                    <span class="hero-slide-cta" id="heroSlideCta">Open →</span>
+                  </div>
+                </a>
+              </div>
+              <div class="hero-slideshow-controls">
+                <button type="button" class="hero-slideshow-btn hero-slideshow-prev" aria-label="Previous slide">
+                  ‹
+                </button>
+                <div class="hero-slideshow-dots" aria-label="Slide navigation"></div>
+                <button type="button" class="hero-slideshow-btn hero-slideshow-next" aria-label="Next slide">
+                  ›
+                </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume" class="section section-alt">
+      <div class="container">
+        <h2>Visual Resume</h2>
+        <p class="section-lead">
+          A timeline of research, teaching, and product-focused engineering roles.
+        </p>
+        <p class="resume-link-row">
+          <a class="text-link" href="assets/Kamron_Soltani_CV.pdf" target="_blank" rel="noopener">Download Full CV</a>
+        </p>
+        <div class="resume-shell is-collapsed" id="resumeShell">
+          <div class="resume-timeline" id="resumeTimeline">
+          <article class="resume-event side-left" data-start="2026-02" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Feb 2026 to Present</p>
+            <h3>UC Berkeley MechE: research assistant, Morphing Matters Lab</h3>
+            <p class="resume-summary">Soft robotics and wearables: disk sequin e-textiles with embedded electronics, with Professor Lining Yao.</p>
+            <div class="resume-event-detail" hidden>
+              <p>Research assistant in the Morphing Matters Lab, building mechanically reconfigurable electronic textiles.</p>
+              <ul class="resume-detail-list">
+                <li>Develop soft robotics and wearables using disk sequin fabric architecture with embedded components.</li>
+                <li>Study how fabric responds to movement, using mechanical deformation to reconfigure circuits on the body.</li>
+                <li>Design custom PCB disks with conductive materials, transistors, sensors, and microcontrollers.</li>
+              </ul>
+              <div class="resume-event-photos" aria-label="Add photos (Morphing Matters lab)"></div>
+            </div>
+          </article>
+          <article class="resume-event side-right" data-start="2026-01" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Jan 2026 to Present</p>
+            <h3>UC Berkeley MechE: graduate student instructor (ME235)</h3>
+            <p class="resume-summary">Graduate embedded systems: microprocessor architecture, real time and multitasking code, LabVIEW, ESP-IDF (~120 students).</p>
+            <div class="resume-event-detail" hidden>
+              <p>ME235 GSI for a graduate MechE course on microprocessor based systems and LabVIEW integration.</p>
+              <ul class="resume-detail-list">
+                <li>Facilitate weekly live labs with hands on debugging of real time and multitasking code.</li>
+                <li>Create and grade assignments that push on advanced embedded concepts using the ESP-IDF stack.</li>
+                <li>Help students bridge firmware, peripherals, and LabVIEW in a large enrollment section.</li>
+              </ul>
+              <div class="resume-event-photos" aria-label="Photos for this role"></div>
+            </div>
+          </article>
+          <article class="resume-event side-left" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2025 to Present</p>
+            <h3>UC Berkeley: M.S. Mechanical Engineering</h3>
+            <p class="resume-summary">Graduate studies in mechanical engineering with focus on mechatronics, controls, and product systems.</p>
+            <div class="resume-event-detail" hidden>
+              <p>Coursework skews toward controls, mechatronics, and shipping real hardware after the degree, not only theory on paper.</p>
+              <div class="resume-event-photos" aria-label="Photos for this role"></div>
+            </div>
+          </article>
+          <article class="resume-event side-right" data-start="2025-07" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Jul 2025 to Sep 2025</p>
+            <h3>NTU Singapore: Global Connect Fellowship robotics research fellow</h3>
+            <p class="resume-summary">Wearable arm tracking at NTU under Prof. Xie Ming; 1 of 56 fellows selected from 4,500+ applicants.</p>
+            <div class="resume-event-detail" hidden>
+              <p>Global Connect Fellowship: summer research cohort in Singapore with an international peer group.</p>
+              <ul class="resume-detail-list">
+                <li>Compared IMU, piezoelectric, and hybrid stacks for arm motion tracking latency and signal quality.</li>
+                <li>Showed a hybrid layout (IMU on bony areas plus piezo film on joints) as the strongest low latency option.</li>
+                <li>Collaborated across the cohort to sharpen methods and get perspective on hardware choices in wearables.</li>
+              </ul>
+              <div class="resume-event-photos" data-photo-set="ntu" aria-label="Photos for NTU Singapore"></div>
+            </div>
+          </article>
+          <article class="resume-event side-left" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2025 to Present</p>
+            <h3><a class="text-link" href="project-mangrove-water.html">Mangrove Water</a>: MechE research design engineer</h3>
+            <p class="resume-summary">Mechanical design on Mangrove&rsquo;s Turi-Tap chlorinators for handpump integration with Professor Amy Pickering.</p>
+            <div class="resume-event-detail" hidden>
+              <p>CivE research role: CAD, FEA and CFD, and rapid prototyping to improve performance and cost on deployed hardware.</p>
+              <ul class="resume-detail-list">
+                <li>Leading mechanical adaptation of Mangrove&rsquo;s Turi-Tap chlorinators for universal handpump integration.</li>
+                <li>Optimizing the V2 enclosure for a 500+ unit injection molding run using UV stable PET/ASA and galvanized steel.</li>
+                <li>Validated about 3 kPa head loss with CFD and checked structural and torque critical regions with FEA.</li>
+                <li>Turning live field feedback from teams 7,000 miles away into fast design iterations.</li>
+              </ul>
+              <div class="resume-event-photos" data-photo-set="mangrove" aria-label="Photos for Mangrove Water"></div>
+            </div>
+          </article>
+          <article class="resume-event side-right" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2025 to Present</p>
+            <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: graduate student mechanical advisor</h3>
+            <p class="resume-summary">Guide design and integration strategy across propulsion, avionics, and airframe subsystems.</p>
+            <div class="resume-event-detail" hidden>
+              <p>I sit in design reviews, flag integration risks early, and help student leads sequence work so competition deadlines stay sane.</p>
+              <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
+            </div>
+          </article>
+          <article class="resume-event side-left" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2023 to Dec 2025</p>
+            <h3>UC Berkeley MechE: graduate student instructor (ME100)</h3>
+            <p class="resume-summary">Lead GSI for ME100: digital and analog circuits, microcontrollers, and IoT (~185 students, multiple semesters).</p>
+            <div class="resume-event-detail" hidden>
+              <p>Upper division MechE technical course: fundamentals from breadboard through connected systems.</p>
+              <ul class="resume-detail-list">
+                <li>Weekly discussion section for homework, lab ideas, and exam prep.</li>
+                <li>Nine hours of lab per week: concepts, debugging, and build help on student hardware.</li>
+                <li>Authored and graded labs, homework, and exam items aligned to departmental outcomes.</li>
+              </ul>
+              <div class="resume-event-photos" aria-label="Add photos (ME100)"></div>
+            </div>
+          </article>
+          <article class="resume-event side-right" data-start="2024-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2024 to May 2025</p>
+            <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: structures lead</h3>
+            <p class="resume-summary">Led airframe design, analysis, and team coordination for yearly SAE competition requirements.</p>
+            <div class="resume-event-detail" hidden>
+              <p>I owned the airframe schedule, structural drawings, and how we interpreted the rules each competition cycle.</p>
+              <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
+            </div>
+          </article>
+          <article class="resume-event side-left" data-start="2024-05" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">May 2024 to Aug 2024</p>
+            <h3>Siemens Mobility: ops project controls engineering intern</h3>
+            <p class="resume-summary">Production planning for 350+ locomotive and LRV builds: SAP, P6, material programs, and ECO driven rebaselining.</p>
+            <div class="resume-event-detail" hidden>
+              <p>Ops project controls intern aligning subassemblies, labor, and material readiness across programs.</p>
+              <ul class="resume-detail-list">
+                <li>Ran material analysis for 15,000+ parts in SAP: availability, stock trends, and ECO impacts on forecasts.</li>
+                <li>Read assembly drawings and translated new ECOs into step by step build instructions.</li>
+                <li>Worked with PM, operations, and quality on shortages and line speed to protect gates.</li>
+                <li>Daily reporting to 50+ stakeholders on schedule risk and assembly pacing.</li>
+              </ul>
+              <div class="resume-event-photos" data-photo-set="siemens" aria-label="Photos for Siemens Mobility"></div>
+            </div>
+          </article>
+          <article class="resume-event side-right" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2023 to Jul 2024</p>
+            <h3>UC Berkeley CoE: peer advisor</h3>
+            <p class="resume-summary">Front line advising for 4,000+ CoE students on academics, petitions, and professional development.</p>
+            <div class="resume-event-detail" hidden>
+              <p>Peer advisor working alongside staff advisors on policy and student success.</p>
+              <ul class="resume-detail-list">
+                <li>One on one and group support for degree planning, petitions, and college resources.</li>
+                <li>Aligned with advisors to uphold academic standards and collegewide policy.</li>
+                <li>Helped run student events and workshops with administrators on budget and logistics.</li>
+              </ul>
+              <div class="resume-event-photos" aria-label="Photos for this role"></div>
+            </div>
+          </article>
+          <article class="resume-event side-left" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2023 to Aug 2024</p>
+            <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: landing gear lead</h3>
+            <p class="resume-summary">Improved landing gear performance through SolidWorks and Ansys analysis and rapid prototyping.</p>
+            <div class="resume-event-detail" hidden>
+              <p>I led loads, test fixtures, and the fast prints that kept flight test from stalling when something broke.</p>
+              <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
+            </div>
+          </article>
+          <article class="resume-event side-right" data-start="2023-01" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Jan 2023 to May 2023</p>
+            <h3>UC Berkeley Dado and Maria Banatao Center for GLOBE: student consultant intern</h3>
+            <p class="resume-summary">Strategic consulting for NEWUP Innovative Technologies: SiC wafer repair and MOCVD process, with travel to Taiwan.</p>
+            <div class="resume-event-detail" hidden>
+              <p>GLOBE cohort project with a startup partnered through Taiwan&rsquo;s ITRI ecosystem.</p>
+              <ul class="resume-detail-list">
+                <li>Supported strategy for SiC wafer repair and transfer of MOCVD related technology.</li>
+                <li>Traveled to Taiwan and met TSMC, HTC, Quanta, ITRI, Delta Technologies, and other partners.</li>
+                <li>Helped connect Berkeley engineering talent with the startup&rsquo;s growth and cross border collaboration goals.</li>
+              </ul>
+              <div class="resume-event-photos" data-photo-set="globe" aria-label="Photos for GLOBE"></div>
+            </div>
+          </article>
+          <article class="resume-event side-left" data-start="2022-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2022 to Aug 2023</p>
+            <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: electrical team member</h3>
+            <p class="resume-summary">Processed multi-sensor thrust data and force modeling workflows to support aircraft design decisions.</p>
+            <div class="resume-event-detail" hidden>
+              <p>I turned bench thrust measurements into plots structures could use without hand waving.</p>
+              <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
+            </div>
+          </article>
+          <article class="resume-event side-right" data-start="2022-01" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Jan 2022 to May 2024</p>
+            <h3>Research Technology Learning: assistant program manager</h3>
+            <p class="resume-summary">Led 30+ student staff and scheduling for large lecture halls, course capture, and AV support.</p>
+            <div class="resume-event-detail" hidden>
+              <p>RTL: operations for auditorium tech teams supporting high enrollment courses.</p>
+              <ul class="resume-detail-list">
+                <li>Supervised and mentored 30+ staff weekly on hall operations and performance.</li>
+                <li>Built schedules for 80+ shifts per cycle across auditoriums.</li>
+                <li>Backed courses such as CS61A/B/C, Chem 1A/3A, CS188/189, and L&amp;S 110 Brilliance of Berkeley.</li>
+                <li>Coordinated troubleshooting for AV systems and course capture with the student operator team.</li>
+              </ul>
+              <div class="resume-event-photos" aria-label="Photos for this role"></div>
+            </div>
+          </article>
+          <article class="resume-event side-left" data-start="2021-08" tabindex="0" role="button" aria-expanded="false">
+            <span class="resume-expand-icon" aria-hidden="true"></span>
+            <p class="resume-date">Aug 2021 to May 2025</p>
+            <h3>UC Berkeley: B.S. Mechanical Engineering</h3>
+            <p class="resume-summary">Undergraduate mechanical engineering degree with design, manufacturing, and embedded systems emphasis.</p>
+            <div class="resume-event-detail" hidden>
+              <p>Undergrad mixed shop time, design studios, and firmware classes until fabrication and code felt like one loop.</p>
+              <div class="resume-event-photos" aria-label="Photos for this role"></div>
+            </div>
+          </article>
+          </div>
+        </div>
+        <button class="resume-toggle" id="resumeToggle" type="button" aria-expanded="false" aria-label="Expand or collapse timeline">
+          <span aria-hidden="true">⌄</span>
+        </button>
+        <div class="skill-tags resume-skills" aria-label="Skill tags">
+          <span class="skill-tag-chip" data-tag="cad-3d">3D CAD &amp; solid modeling</span>
+          <span class="skill-tag-chip" data-tag="fea-cfd">FEA / CFD simulation</span>
+          <span class="skill-tag-chip" data-tag="surface-modeling">Surface &amp; complex geometry</span>
+          <span class="skill-tag-chip" data-tag="gdt-tolerances">GD&amp;T &amp; tolerance stack-ups</span>
+          <span class="skill-tag-chip" data-tag="dfm-dfa">DFM / DFA</span>
+          <span class="skill-tag-chip" data-tag="prototyping">Rapid prototyping &amp; 3D printing</span>
+          <span class="skill-tag-chip" data-tag="machining-molding">CNC, lathe &amp; molding</span>
+          <span class="skill-tag-chip" data-tag="embedded-rtos">Embedded C/C++ &amp; RTOS</span>
+          <span class="skill-tag-chip" data-tag="labview">LabVIEW &amp; instrumentation</span>
+          <span class="skill-tag-chip" data-tag="controls">PID / LQR &amp; controls</span>
+          <span class="skill-tag-chip" data-tag="sensing-vision">Sensing &amp; sensor fusion</span>
+          <span class="skill-tag-chip" data-tag="pcb-iot">PCB design &amp; IoT</span>
+          <span class="skill-tag-chip" data-tag="analog-digital">Analog &amp; digital circuits</span>
+          <span class="skill-tag-chip" data-tag="matlab-simulink">MATLAB / Simulink</span>
+          <span class="skill-tag-chip" data-tag="python">Python &amp; scientific stack</span>
+          <span class="skill-tag-chip" data-tag="sap-p6">SAP &amp; Oracle P6</span>
+          <span class="skill-tag-chip" data-tag="project-planning">Program &amp; schedule planning</span>
+          <span class="skill-tag-chip" data-tag="mechatronics">Mechatronics integration</span>
+          <span class="skill-tag-chip" data-tag="wearables">Wearables &amp; soft systems</span>
+          <span class="skill-tag-chip" data-tag="vba-automation">VBA &amp; office automation</span>
+          <span class="skill-tag-chip" data-tag="ms-project">MS Project</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Design & Engineering Preview</h2>
+          <a class="text-link" href="design-engineering.html">View All Projects</a>
+        </div>
+        <p class="section-lead">
+          Same project set as the archive: scroll the rail or open the full index.
+        </p>
+        <div class="preview-rail">
+          <button type="button" class="preview-prev preview-nav" data-track="projectsTrack" aria-label="Show previous projects" disabled>
+            ‹
+          </button>
+          <div class="cards preview-track" id="projectsTrack">
+            <a class="card card--project" id="project-mangrove-water" href="project-mangrove-water.html" data-project-id="project-mangrove-water">
+              <div class="card-image placeholder">Mangrove Water</div>
+              <div class="card-body">
+                <p class="card-label">Water / Public health · 2026</p>
+                <h3>Mangrove Water</h3>
+                <p class="card-summary">Handpump inline chlorination: CAD, prototyping, field iteration.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-morphing-dress" href="project-morphing-dress.html" data-project-id="project-morphing-dress">
+              <div class="card-image placeholder">FormaFlow</div>
+              <div class="card-body">
+                <p class="card-label">ME292C · Morphing materials · 2025</p>
+                <h3>FormaFlow Morphing Dress</h3>
+                <p class="card-summary">Wearable hemline morphing: ESP32, IMU stair detection, servos.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-cal-aerospace-sae" href="project-cal-aerospace-sae.html" data-project-id="project-cal-aerospace-sae">
+              <div class="card-image placeholder">CAL Aerospace</div>
+              <div class="card-body">
+                <p class="card-label">Competition team · 2025</p>
+                <h3>CAL Aerospace SAE: RC plane</h3>
+                <p class="card-summary">Student competition aircraft: design, build, and flight test.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-lmks-v1" href="project-lmks-v1.html" data-project-id="project-lmks-v1">
+              <div class="card-image placeholder">LMKS V1</div>
+              <div class="card-body">
+                <p class="card-label">Embedded / optics · 2025</p>
+                <h3>LMKS V1 light meter</h3>
+                <p class="card-summary">Compact ESP32-C3 meter: custom PCB, OLED, enclosure.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-esp-flight-tracker" href="project-esp-flight-tracker.html" data-project-id="project-esp-flight-tracker">
+              <div class="card-image placeholder">ESP Flight Tracker</div>
+              <div class="card-body">
+                <p class="card-label">Embedded / aviation · 2025</p>
+                <h3>ESP Flight Tracker</h3>
+                <p class="card-summary">ADS-B / aircraft data on ESP32: hardware &amp; firmware.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-realtime-insole" href="project-realtime-insole.html" data-project-id="project-realtime-insole">
+              <div class="card-image placeholder">Insole</div>
+              <div class="card-body">
+                <p class="card-label">Wearables / MEC278 · 2025</p>
+                <h3>Realtime insole monitoring</h3>
+                <p class="card-summary">Pressure-sensing insole for CAM walking boots.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-me103-sourdough" href="project-me103-sourdough.html" data-project-id="project-me103-sourdough">
+              <div class="card-image placeholder">ME103</div>
+              <div class="card-body">
+                <p class="card-label">Materials · ME103 · 2024</p>
+                <h3>Sourdough material analysis</h3>
+                <p class="card-summary">Compression &amp; image based strain: hydration vs protein.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-esp-meter" href="project-esp-meter.html" data-project-id="project-esp-meter">
+              <div class="card-image placeholder">ESP-Meter</div>
+              <div class="card-body">
+                <p class="card-label">Embedded / film · 2025</p>
+                <h3>ESP-Meter</h3>
+                <p class="card-summary">ESP32 smart exposure meter for film photography.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-me226-fermiq" href="project-me226-fermiq.html" data-project-id="project-me226-fermiq">
+              <div class="card-image placeholder">FermIQ</div>
+              <div class="card-body">
+                <p class="card-label">IoT / ME226 · 2024</p>
+                <h3>FermIQ smart fermentation lid</h3>
+                <p class="card-summary">Sensing and control for fermentation vessels.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-me100-intillifresh" href="project-me100-intillifresh.html" data-project-id="project-me100-intillifresh">
+              <div class="card-image placeholder">Intillifresh</div>
+              <div class="card-body">
+                <p class="card-label">IoT / ME100 · 2023</p>
+                <h3>Intillifresh Flush Sense</h3>
+                <p class="card-summary">ESP32 IoT smart air freshener / flush sensing.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-me102b-ez-darkroom" href="project-me102b-ez-darkroom.html" data-project-id="project-me102b-ez-darkroom">
+              <div class="card-image placeholder">EZ-Darkroom</div>
+              <div class="card-body">
+                <p class="card-label">Automation / ME102B · 2025</p>
+                <h3>ME102B EZ-Darkroom</h3>
+                <p class="card-summary">Automated film darkroom and scanning workflow.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-e29-light-skate" href="project-e29-light-skate.html" data-project-id="project-e29-light-skate">
+              <div class="card-image placeholder">Light Skate</div>
+              <div class="card-body">
+                <p class="card-label">Mobility / E29 · 2022</p>
+                <h3>E29: Light Skate</h3>
+                <p class="card-summary">Modular micro-mobility lighting concept.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-me235-candy-crawler" href="project-me235-candy-crawler.html" data-project-id="project-me235-candy-crawler">
+              <div class="card-image placeholder">Candy Crawler</div>
+              <div class="card-body">
+                <p class="card-label">Controls / ME235 · 2024</p>
+                <h3>ME235: Candy Crawler</h3>
+                <p class="card-summary">LabVIEW autonomous line-follower vehicle.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+            <a class="card card--project" id="project-e26-windmill" href="project-e26-windmill.html" data-project-id="project-e26-windmill">
+              <div class="card-image placeholder">Windmill</div>
+              <div class="card-body">
+                <p class="card-label">CAD / E26 · 2021</p>
+                <h3>E26: 3D printed windmill</h3>
+                <p class="card-summary">Modeled and printed windmill: first-principles build.</p>
+                <p class="card-cta"><span class="card-link-hint">View project →</span></p>
+              </div>
+            </a>
+          </div>
+          <button type="button" class="preview-next preview-nav" data-track="projectsTrack" aria-label="Show more projects">
+            ›
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="photography" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Film Photography Preview</h2>
+          <a class="text-link" href="photography.html#film-archive-intro">View film archive</a>
+        </div>
+        <p class="section-lead">
+          Every roll from <code>film-archive.json</code> (same order as the film archive). Scroll the rail to see more.
+        </p>
+        <div class="preview-rail">
+          <button type="button" class="preview-prev preview-nav" data-track="photosTrack" aria-label="Show previous photos" disabled>
+            ‹
+          </button>
+          <div class="gallery preview-track" id="photosTrack">
+          </div>
+          <button type="button" class="preview-next preview-nav" data-track="photosTrack" aria-label="Show more photos">
+            ›
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="section-lead">Let&rsquo;s connect about product design, engineering, and collaboration.</p>
+        <div class="contact-links">
+          <a href="mailto:kamron@example.com">Email</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p class="site-footer-copy">&copy; <span id="year"></span> Kamron Soltani</p>
+      <p class="site-footer-note">
+        Site design influenced by 1970s San Francisco Muni logo and transit graphics.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=hero113"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+.DS_Store
+Thumbs.db
+
+# GitHub blocks files >100MB; large raws — host on Vimeo/YouTube instead
+assets/design/Cal Aero SAE/CAN_9391.mp4

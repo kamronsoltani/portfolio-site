@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESP-Meter | Kamron Soltani</title>
+  <meta name="description" content="ESP32-C3 smart exposure meter for film: BH1750 lux sensing, calibrated against a Sekonic L-308S." />
+  <link rel="stylesheet" href="styles.css?v=hero113" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kamron Soltani</a>
+      <button class="menu-button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="design-engineering.html">Design & Engineering</a>
+        <a href="photography.html">Film Photography</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article class="section">
+      <div class="container project-detail">
+        <p class="project-back"><a class="text-link" href="design-engineering.html#project-esp-meter">← Back to Design &amp; Engineering</a></p>
+        <h1>ESP-Meter</h1>
+        <p class="project-meta">2025 · ESP32 · Film · Metering</p>
+        <p class="section-lead">ESP32-C3 exposure helper for analog shooters, a BH1750 lux sensor, rotary encoders, switches, and a low-power OLED in a compact DIY meter.</p>
+        <div class="project-content-split" data-project-lightbox>
+          <div class="project-content-primary">
+            <div class="project-hero-text-match" aria-label="Project photo">
+              <button
+                type="button"
+                class="project-hero-main project-hero-lightbox-trigger"
+                aria-label="Open large photo with caption"
+                data-caption="ESP-Meter: device overview."
+              >
+                <img
+                  src="assets/design/ESP-Meter/ESPMeter1.png"
+                  alt="ESP-Meter"
+                  width="1600"
+                  height="1200"
+                  loading="eager"
+                  decoding="async"
+                />
+              </button>
+            </div>
+            <div class="project-body">
+              <h2>Background</h2>
+              <p>
+                The <strong>ESP-Meter</strong> is a personal project for analog photographers who want clearer exposure decisions, especially newcomers balancing shutter speed and aperture. It is built around an <strong>ESP32-C3</strong>, a <strong>BH1750</strong> ambient light sensor, rotary encoders, and switches, with a small <strong>OLED</strong> readout to keep power draw low.
+              </p>
+              <h2>Calibration</h2>
+              <p>
+                The meter was calibrated and compared against a <strong>Sekonic L-308S</strong>, a common incident meter priced around $300. In testing, the ESP-Meter tracked within roughly <strong>98%</strong> of the Sekonic’s EV readings. Bill of materials lands near <strong>$15</strong>, on the order of 20× cheaper than the commercial tool, in a smaller package, while remaining accurate enough for everyday film work.
+              </p>
+            </div>
+          </div>
+          <div class="project-gallery-stack">
+            <aside class="project-gallery-aside" aria-label="Project image gallery">
+              <div class="project-gallery-grid project-gallery-grid--stack">
+                <button type="button" class="project-gallery-tile project-gallery-tile--land" aria-label="Open photo: ESPMeter2">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/ESP-Meter/ESPMeter2.jpeg" alt="" width="1200" height="900" loading="lazy" decoding="async" data-caption="Hardware detail." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--sq" aria-label="Open photo: Espmeter3">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/ESP-Meter/Espmeter3.jpeg" alt="" width="900" height="900" loading="lazy" decoding="async" data-caption="Electronics / enclosure." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--land" aria-label="Open photo: ESPMeter4">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/ESP-Meter/ESPMeter4.jpeg" alt="" width="1200" height="900" loading="lazy" decoding="async" data-caption="Build or UI." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--sq" aria-label="Open photo: ESPMeter5">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/ESP-Meter/ESPMeter5.png" alt="" width="900" height="900" loading="lazy" decoding="async" data-caption="Documentation photo." />
+                  </span>
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p class="site-footer-copy">&copy; <span id="year"></span> Kamron Soltani</p>
+      <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
+    </div>
+  </footer>
+  <script src="script.js?v=hero113"></script>
+</body>
+</html>

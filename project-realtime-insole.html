@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Realtime Insole Monitoring | Kamron Soltani</title>
+  <meta name="description" content="MEC278 pressure sensing insole for CAM walking boots: thin film sensors, ESP32, ESP-NOW, TPU soles." />
+  <link rel="stylesheet" href="styles.css?v=hero113" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kamron Soltani</a>
+      <button class="menu-button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="design-engineering.html">Design & Engineering</a>
+        <a href="photography.html">Film Photography</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article class="section">
+      <div class="container project-detail">
+        <p class="project-back"><a class="text-link" href="design-engineering.html#project-realtime-insole">← Back to Design &amp; Engineering</a></p>
+        <h1>Realtime insole monitoring</h1>
+        <p class="project-meta">2025 · MEC278 · Wearables · Sensing</p>
+        <p class="section-lead">Pressure sensing insole for CAM walking boots (MEC278): thin film sensors, ESP32 telemetry, and injury specific TPU geometry for rehab feedback.</p>
+        <div class="project-content-split" data-project-lightbox>
+          <div class="project-content-primary">
+            <div class="project-hero-text-match" aria-label="Project photo">
+              <button
+                type="button"
+                class="project-hero-main project-hero-lightbox-trigger"
+                aria-label="Open large photo with caption"
+                data-caption="Insole hardware: overview."
+              >
+                <img
+                  src="assets/design/Insole%20Monitor/insole%201.png"
+                  alt="Realtime insole monitoring: overview"
+                  width="1600"
+                  height="1200"
+                  loading="eager"
+                  decoding="async"
+                />
+              </button>
+            </div>
+            <p class="project-doc-link">
+              <a
+                class="text-link"
+                href="https://www.dropbox.com/scl/fi/q978cr4i6ikjbzvz80jrq/FinalReport.pdf?rlkey=qgdxjmneni5fu4sljyb2qz1pw&amp;st=5x5djx9a&amp;dl=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                >MEC278 report (PDF)</a>
+            </p>
+            <div class="project-body">
+              <h2>Background</h2>
+              <p>
+                Standard <strong>CAM walking boots</strong> mostly use one size fits all thinking for diverse injuries (turf toe, Jones fractures, diabetic ulcers, and more). That creates ambiguity in treatment effectiveness: different patients load the foot differently even when the diagnosis matches. Our system pairs injury specific insoles with quantitative pressure tracking so clinicians and patients get real-time feedback on force distribution during rehabilitation.
+              </p>
+              <h2>Technical architecture</h2>
+              <p>
+                The build integrates three thin film pressure sensors on a rigid bottom sole, placed at the heel and two forefoot locations to capture primary load-bearing zones. A modular flexible <strong>TPU</strong> insole with variable infill sits on top, using a low-density <strong>gyroid</strong> pattern over the injured region to offload pressure. An <strong>ESP32</strong> reads sensor data and sends it over <strong>ESP-NOW</strong> to both a wearable OLED “smartwatch” that shows live pressure percentages and a GUI dashboard where the user enters weight and allowable pressure thresholds for alerts. The rigid sole houses the electronics with JST connectors for fast debugging and sensor swaps.
+              </p>
+              <h2>Results &amp; iteration</h2>
+              <p>
+                The injury specific sole uses black TPU with gyroid infill at the injury site for localized compliance. In testing, that reduced toe-box pressure from <strong>13.1% to 5.8%</strong> during two-leg standing and from <strong>28.8% to 11.5%</strong> during one-leg standing versus a rigid control sole. Discrete stiffness regions enable targeted offloading without sacrificing overall thickness or stability, aiming to reduce reliance on crutches while keeping rehab effective.
+              </p>
+              <p>
+                Early prototypes compared three TPU materials and several infill patterns (hexagons, thin lines, hollow regions); black TPU with gyroid patterns gave the best compressive behavior. Initial 50&nbsp;kg load cells were replaced with thin film pressure sensors after calibration struggles with point loads. The team evaluated three to seven sensor layouts, balancing integration effort with diagnostic value.
+              </p>
+              <p>
+                A custom GUI incorporates user weight and pressure thresholds informed by clinician interviews, many recoveries stall when force patterns during gait stay unclear. The final architecture uses modular, swappable injury specific sole inserts, a side-mounted electronics box with reset, and wireless monitoring on both wrist and desktop.
+              </p>
+            </div>
+          </div>
+          <div class="project-gallery-stack">
+            <aside class="project-gallery-aside" aria-label="Project image gallery">
+              <div class="project-gallery-grid project-gallery-grid--stack">
+                <button type="button" class="project-gallery-tile project-gallery-tile--land" aria-label="Open photo: insole 2">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/Insole%20Monitor/insole%202.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" data-caption="Insole build / test." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--sq" aria-label="Open photo: insole 3">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/Insole%20Monitor/insole%203.jpg" alt="" width="900" height="900" loading="lazy" decoding="async" data-caption="Insole detail." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--land" aria-label="Open photo: insole GUI">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/Insole%20Monitor/insole%204%20gui.png" alt="" width="1200" height="900" loading="lazy" decoding="async" data-caption="GUI / readout." />
+                  </span>
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p class="site-footer-copy">&copy; <span id="year"></span> Kamron Soltani</p>
+      <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
+    </div>
+  </footer>
+  <script src="script.js?v=hero113"></script>
+</body>
+</html>

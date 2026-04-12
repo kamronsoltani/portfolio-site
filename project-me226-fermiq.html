@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ME226 FermIQ | Kamron Soltani</title>
+  <meta name="description" content="FermIQ: ME226 smart fermentation lid with ESP32, sensors, and a web dashboard for rise time and thresholds." />
+  <link rel="stylesheet" href="styles.css?v=hero113" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kamron Soltani</a>
+      <button class="menu-button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="design-engineering.html">Design & Engineering</a>
+        <a href="photography.html">Film Photography</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article class="section">
+      <div class="container project-detail">
+        <p class="project-back"><a class="text-link" href="design-engineering.html#project-me226-fermiq">← Back to Design &amp; Engineering</a></p>
+        <h1>FermIQ smart fermentation lid</h1>
+        <p class="project-meta">2024 · ME226 · IoT · Food tech</p>
+        <p class="section-lead">A modular smart lid for home and pro kitchens, temperature, humidity, pH, and rise tracking over Wi-Fi so fermentation stays consistent from sourdough to kombucha.</p>
+        <div class="project-content-split" data-project-lightbox>
+          <div class="project-content-primary">
+            <div class="project-hero-text-match" aria-label="Project photo">
+              <button
+                type="button"
+                class="project-hero-main project-hero-lightbox-trigger"
+                aria-label="Open large photo with caption"
+                data-caption="FermIQ: overview."
+              >
+                <img
+                  src="assets/design/FermIQ/fermiq1.png"
+                  alt="FermIQ smart fermentation lid"
+                  width="1600"
+                  height="1200"
+                  loading="eager"
+                  decoding="async"
+                />
+              </button>
+            </div>
+            <div class="project-body">
+              <h2>Background</h2>
+              <p>
+                <strong>FermIQ</strong> was created to make fermentation easier to repeat at home and in professional kitchens. It targets the variables that actually drive outcomes, <strong>temperature, humidity, pH, and rise time</strong>, without the cost or lock-in of boutique appliances. The design is modular, priced for accessibility, and sized for standard containers so most cooks can adopt it.
+              </p>
+              <h2>Hardware</h2>
+              <p>
+                The physical story is told through <strong>CAD</strong> mockups and a sealed, sensor-rich lid: microprocessor-based sensing replaces guesswork with continuous measurements you can trust batch to batch.
+              </p>
+              <h2>Software</h2>
+              <p>
+                An <strong>ESP32</strong> hosts a lightweight web server so you can monitor a ferment from a phone or laptop. Sensor data streams to the browser with live metrics for temperature, humidity, pH, and dough height. The interface includes a rise mode that estimates proofing time and configurable thresholds so you can intervene before a batch drifts off course, fewer manual spot checks without sacrificing control.
+              </p>
+            </div>
+          </div>
+          <div class="project-gallery-stack">
+            <aside class="project-gallery-aside" aria-label="Project image gallery">
+              <div class="project-gallery-grid project-gallery-grid--stack">
+                <button type="button" class="project-gallery-tile project-gallery-tile--sq" aria-label="Open photo: fermiq2">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/FermIQ/fermiq2.png" alt="" width="900" height="900" loading="lazy" decoding="async" data-caption="Lid / sensor detail." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--land" aria-label="Open photo: fermiq3">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/FermIQ/fermiq3.png" alt="" width="1200" height="900" loading="lazy" decoding="async" data-caption="Assembly." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--sq" aria-label="Open photo: fermiq4">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/FermIQ/fermiq4.png" alt="" width="900" height="900" loading="lazy" decoding="async" data-caption="Interface or test." />
+                  </span>
+                </button>
+                <button type="button" class="project-gallery-tile project-gallery-tile--land" aria-label="Open photo: fermiq5">
+                  <span class="project-gallery-frame">
+                    <img src="assets/design/FermIQ/fermiq5.png" alt="" width="1200" height="900" loading="lazy" decoding="async" data-caption="Documentation photo." />
+                  </span>
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p class="site-footer-copy">&copy; <span id="year"></span> Kamron Soltani</p>
+      <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
+    </div>
+  </footer>
+  <script src="script.js?v=hero113"></script>
+</body>
+</html>
