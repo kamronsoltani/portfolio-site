@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any" />
   <title>ME103: Sourdough Material Analysis | Kamron Soltani</title>
   <meta name="description" content="ME103: mechanical testing of sourdough: compression, strain tracking, hydration and protein effects on crumb structure." />
-  <link rel="stylesheet" href="styles.css?v=hero113" />
+  <link rel="stylesheet" href="styles.css?v=hero145" />
 </head>
 <body>
   <header class="site-header">
@@ -26,7 +27,7 @@
         <p class="project-back"><a class="text-link" href="design-engineering.html#project-me103-sourdough">← Back to Design &amp; Engineering</a></p>
         <h1>ME103: Sourdough material analysis</h1>
         <p class="project-meta">2024 · ME103 · Materials</p>
-        <p class="section-lead">Compression testing and image based strain tracking on Pullman loaves: hydration, protein, and viscoelastic response.</p>
+        <p class="section-lead">In ME103, we treated sourdough like a real material system and tested how hydration and protein levels change its mechanical behavior.</p>
         <div class="project-content-split" data-project-lightbox>
           <div class="project-content-primary">
             <div class="project-hero-text-match" aria-label="Project photo">
@@ -57,18 +58,18 @@
             <div class="project-body">
               <h2>Background</h2>
               <p>
-                In this <strong>ME103</strong> project, we investigated the mechanical properties of sourdough bread, focusing on strain, stress, creep, and elasticity. Using various hydration and protein levels, we related those inputs to crumb structure and integrity. Bread behaves as a complex viscoelastic material, elastic and time-dependent, which makes mechanical response hard to predict without testing.
+                In this ME103 project, we investigated sourdough as a mechanical material by focusing on strain, stress, creep, and elasticity. We varied hydration and protein levels and linked those inputs to crumb structure and structural integrity. Bread behaves as a viscoelastic material, so its response is both elastic and time dependent, which makes it hard to predict without direct testing.
               </p>
               <p>
-                Using a standard compression test, we measured strain in real time as the bread deformed under load. With image processing and load-cell integration, we tracked and calculated stress, strain, and creep characteristics. The work explores sourdough&rsquo;s mechanical behavior and quantifies its response under controlled loading.
+                We used a standard compression setup to measure strain in real time while samples deformed under load. With image processing and load cell data, we calculated stress, strain, and creep behavior under controlled conditions.
               </p>
               <h2>Technical architecture</h2>
               <p>
-                We baked sourdough test specimens as <strong>Pullman loaves</strong> to keep loaf geometry consistent. The <strong>testing apparatus</strong> combined a compression stage with imaging so we could correlate load and deformation. Strain was analyzed with <strong>edge-based, random, and 10×10 grid</strong> tracking schemes to compare how displacement fields were estimated across the crumb.
+                We baked all specimens as <strong>Pullman loaves</strong> to keep geometry consistent. The <strong>testing apparatus</strong> combined compression with imaging so we could directly correlate force and deformation. Strain was analyzed with <strong>edge based, random, and 10×10 grid</strong> tracking methods to compare displacement estimates across the crumb.
               </p>
-              <h3>Results</h3>
+              <h2>Results</h2>
               <p>
-                Our findings showed that hydration and protein content significantly impact sourdough bread&rsquo;s structural integrity. Higher hydration levels lead to softer crumb structures with greater displacement, while higher protein content contributes to denser, more elastic textures. Our study highlights the interplay between these factors, showing that the combination of high hydration and protein levels could enhance bread elasticity and potentially extend shelf life without using preservatives. These results provide bakers with quantitative data to refine recipes for desired textures and longevity.
+                We found that hydration and protein content both strongly affect structural integrity. Higher hydration produced softer crumbs with larger displacement, while higher protein produced denser and more elastic behavior. The combination of higher hydration and protein improved elasticity in ways that could help with texture and shelf life. The point of this work was to give recipe decisions actual quantitative support instead of relying only on feel.
               </p>
             </div>
           </div>
@@ -118,6 +119,6 @@
       <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
     </div>
   </footer>
-  <script src="script.js?v=hero113"></script>
+  <script src="script.js?v=hero143"></script>
 </body>
 </html>

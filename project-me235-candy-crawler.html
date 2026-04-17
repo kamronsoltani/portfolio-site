@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any" />
   <title>ME235 Candy Crawler | Kamron Soltani</title>
   <meta name="description" content="ME235 Candy Crawler: LabVIEW UI, ESP32 ranging, and autonomous candy delivery." />
-  <link rel="stylesheet" href="styles.css?v=hero113" />
+  <link rel="stylesheet" href="styles.css?v=hero145" />
 </head>
 <body>
   <header class="site-header">
@@ -26,7 +27,7 @@
         <p class="project-back"><a class="text-link" href="design-engineering.html#project-me235-candy-crawler">← Back to Design &amp; Engineering</a></p>
         <h1>ME235: Candy Crawler</h1>
         <p class="project-meta">2024 · ME235 · LabVIEW · Controls</p>
-        <p class="section-lead">A LabVIEW-supervised rover that follows users and dispenses candy, ultrasonic tracking, ESP32 multitasking, and a playful UI around serious embedded practice.</p>
+        <p class="section-lead">Candy Crawler is a small autonomous rover we built in ME235 that follows users and dispenses candy while demonstrating real embedded control work.</p>
         <div class="project-content-split" data-project-lightbox>
           <div class="project-content-primary">
             <div class="project-hero-text-match" aria-label="Project photo">
@@ -49,11 +50,11 @@
             <div class="project-body">
               <h2>Background</h2>
               <p>
-                <strong>Candy Crawler</strong> is a small autonomous rover that follows people and drops candy on command, equal parts controls exercise and crowd pleaser. The build combines 3D printed mechanics, analog and digital sensing, and a <strong>LabVIEW</strong> front panel for operators to supervise behavior in real time.
+                <strong>Candy Crawler</strong> is a small autonomous rover that follows people and drops candy on command. It was fun to demo, but it was also a serious controls and systems integration exercise. The build combines 3D printed mechanics, analog and digital sensing, and a <strong>LabVIEW</strong> front panel for real time supervision.
               </p>
               <h2>Technical architecture</h2>
               <p>
-                Firmware on a dual-core <strong>ESP32</strong> handles ultrasonic ranging, TCP links, interrupts, and timer callbacks in C/C++ so the vehicle can track users between roughly <strong>10&nbsp;cm and 150&nbsp;cm</strong> with stable loop timing. The LabVIEW GUI wraps those streams into a simple interface for tuning and demos, proof that the embedded stack and desktop tooling stayed in sync under conference-room scrutiny.
+                Firmware on a dual core <strong>ESP32</strong> handles ultrasonic ranging, TCP links, interrupts, and timer callbacks in C and C++, so the vehicle can track users from about <strong>10&nbsp;cm to 150&nbsp;cm</strong> with stable loop timing. The LabVIEW GUI wraps those streams into a simple interface for tuning and demos, showing that the embedded stack and desktop control layer stayed synchronized under live use.
               </p>
             </div>
           </div>
@@ -83,6 +84,6 @@
       <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
     </div>
   </footer>
-  <script src="script.js?v=hero113"></script>
+  <script src="script.js?v=hero143"></script>
 </body>
 </html>

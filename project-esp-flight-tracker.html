@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any" />
   <title>ESP Flight Tracker | Kamron Soltani</title>
   <meta name="description" content="ESP Flight Tracker: ADS-B display on ESP32 Feather + 64×32 RGB matrix, ESP-IDF, custom airline bitmaps." />
-  <link rel="stylesheet" href="styles.css?v=hero113" />
+  <link rel="stylesheet" href="styles.css?v=hero145" />
 </head>
 <body>
   <header class="site-header">
@@ -26,7 +27,7 @@
         <p class="project-back"><a class="text-link" href="design-engineering.html#project-esp-flight-tracker">← Back to Design &amp; Engineering</a></p>
         <h1>ESP Flight Tracker</h1>
         <p class="project-meta">2025 · ESP32 · Aviation · IoT</p>
-        <p class="section-lead">Custom ADS-B desk display: live traffic from the adsb.lol feed on an ESP32 Feather V2 and a 64×32 RGB matrix, with hand-drawn airline glyphs and a wall-or-desk 3D printed enclosure.</p>
+        <p class="section-lead">I built a custom ADS B flight tracker that pulls live traffic from adsb.lol and displays it on an ESP32 matrix setup with my own pixel airline logos.</p>
         <div class="project-content-split" data-project-lightbox>
           <div class="project-content-primary">
             <div class="project-hero-text-match" aria-label="Project photo">
@@ -49,7 +50,7 @@
             <div class="project-body">
               <h2>Background</h2>
               <p>
-                This build is a dedicated flight tracker that pulls open ADS-B data (via the <a href="https://adsb.lol" class="text-link" rel="noopener noreferrer">adsb.lol</a> API) and renders nearby or worldwide traffic on a bright pixel board. It is intentionally affordable, about <strong>$30</strong> in parts compared with commercial gadgets, fully custom electronics and graphics, and stable enough to run continuously as a desk toy or wall-mounted glanceable display.
+                This build is a dedicated flight tracker using open ADS B data from the <a href="https://adsb.lol" class="text-link" rel="noopener noreferrer">adsb.lol</a> API. It renders nearby or global traffic on a bright pixel display. I wanted it to be affordable and actually usable, so the parts cost stayed around <strong>$30</strong>, with custom electronics and graphics. It has been stable enough to run continuously on a desk or mounted on a wall.
               </p>
               <h2>Hardware</h2>
               <ul>
@@ -60,14 +61,14 @@
               </ul>
               <h2>Software &amp; firmware</h2>
               <p>
-                Firmware runs on <strong>ESP-IDF</strong> so both cores stay busy without stutter: networking, JSON handling, and framebuffer updates stay partitioned for smooth animation. The on-screen UI is bespoke, layout, typography, and transitions tuned by hand so airline branding reads clearly at a distance.
+                <strong>ESP-IDF</strong> runs on both cores without stutter. Networking, JSON parsing, and framebuffer updates are split to keep animation smooth. I designed the GUI manually, including layout, typography, and transitions. The board has been running continuously for over three months with no issues.
               </p>
               <p>
-                I drew <strong>60+ pixel airline logos</strong> manually so tails and codes match what you see overhead, rather than relying on generic placeholders.
+                <strong>60+ pixel airline logos</strong> I manually drew each airline logo pixel by pixel. 
               </p>
               <h2>Roadmap</h2>
               <p>
-                Next steps include an integrated PCB spin, open-sourcing the repo, and offering an affordable kit for hobbyists who want the same live map without the four-figure price tag of industrial avionics displays.
+                Next steps are integrating the design into a dedicated PCB, open sourcing the repo, and releasing an affordable kit so hobbyists can build the same live map without paying premium gadget pricing.
               </p>
             </div>
           </div>
@@ -107,6 +108,6 @@
       <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
     </div>
   </footer>
-  <script src="script.js?v=hero113"></script>
+  <script src="script.js?v=hero143"></script>
 </body>
 </html>

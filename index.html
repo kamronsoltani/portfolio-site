@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any" />
   <title>Kamron Soltani | Portfolio</title>
   <meta
     name="description"
     content="Kamron Soltani, mechanical engineering graduate student at UC Berkeley. Mechatronics, controls, wearables, and human centered design."
   />
-  <link rel="stylesheet" href="styles.css?v=hero113" />
+  <link rel="stylesheet" href="styles.css?v=hero145" />
 </head>
 <body>
   <header class="site-header">
@@ -30,30 +31,83 @@
     <section id="about" class="hero">
       <div class="container">
         <div class="hero-grid">
-          <div class="hero-copy hero-panel">
+          <div class="hero-copy hero-panel" id="heroCopyPanel">
             <div class="hero-peek" id="heroPeek" aria-hidden="true">
               <img id="heroPeekImg" alt="" width="160" height="160" decoding="async" draggable="false" />
             </div>
-            <h1>
-              Hi, I&rsquo;m
-              <span
-                class="hero-name-hit"
-                id="heroNameHit"
-                role="button"
-                tabindex="0"
-                aria-label="Kamron: tap for a peek, or press and hold"
-              >Kamron</span>!
-            </h1>
-            <p>
-              I&rsquo;m a graduate student at <strong>UC Berkeley</strong> pursuing an M.S. in Mechanical Engineering (B.S., MechE, May&nbsp;2025). My work sits at the intersection of <strong>mechatronics</strong>, <strong>product design</strong>, and physical systems, especially wearables and consumer devices.
-            </p>
-            <p>
-              I teach as a GSI for <strong>ME235</strong> Microprocessor Based Mechanical Systems (Dr.&nbsp;George Anwar), consult on water infrastructure with <strong>Mangrove Water</strong>, and research reconfigurable wearables in the <strong>Morphing Matters Lab</strong> (Dr.&nbsp;Lining Yao).
-            </p>
-            <p>
-              Off the clock: Sacramento Kings fan, transit nerd, Van Hool AG300 enthusiast, sourdough baker, and Lego builder. This site also hosts my <strong>film photography</strong>.
-            </p>
-            
+            <div class="hero-copy-body" id="heroCopyBody">
+              <h1>
+                Hi, I&rsquo;m
+                <span
+                  class="hero-name-hit"
+                  id="heroNameHit"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Kamron: tap for a peek, or press and hold"
+                >Kamron</span>!
+              </h1>
+              <p>
+                I am a graduate student pursing a M.S. in <strong>Mechanical Engineering</strong> at <strong>UC Berkeley</strong> graduating in May 2026. I finished my B.S. in MechE in May&nbsp;2025 and now I focus on <strong>mechatronics</strong>, <strong>product design</strong>, and <strong>physical systems</strong>, especially wearables and consumer devices.
+              </p>
+              <p>
+                Right now I teach as a GSI for <strong>ME235</strong> Microprocessor Based Mechanical Systems with Dr.&nbsp;George Anwar, work on sustainable water hardware as a mechanical design engineer with <strong>Mangrove Water</strong>, and do research on reconfigurable wearables sequin fabric in the <strong>Morphing Matters Lab</strong> with Dr.&nbsp;Lining Yao.
+              </p>
+              <p>
+                Outside of engineering, I am a
+                <button type="button" class="hobby-trigger" data-hobby-key="kings">Sacramento Kings fan</button>
+                (2002 WCF was rigged),
+                <button type="button" class="hobby-trigger" data-hobby-key="transit">transit nerd</button>,
+                <button type="button" class="hobby-trigger" data-hobby-key="ag300">Van Hool AG300 enthusiast</button>,
+                <button type="button" class="hobby-trigger" data-hobby-key="sourdough">sourdough baker</button>,
+                and
+                <button type="button" class="hobby-trigger" data-hobby-key="lego">Lego builder</button>.
+                This site also includes my <strong>film photography portfolio</strong>.
+              </p>
+            </div>
+            <div
+              class="hero-hobby-fill"
+              id="heroHobbyFill"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Hobby photos"
+              aria-hidden="true"
+            >
+              <button type="button" class="eyebrow hero-hobby-fill-back" id="hobbySlideshowBack" aria-label="Back to intro">
+                Back
+              </button>
+              <div class="hero-slideshow">
+                <div class="hero-slideshow-viewport">
+                  <div class="hero-slide-link hero-hobby-fill-slide" role="group" aria-label="Hobby slide">
+                    <div class="hero-slide-media" id="hobbyHeroSlideMedia">
+                      <img
+                        class="hero-hobby-slide-img"
+                        id="hobbyHeroSlideImg"
+                        alt=""
+                        decoding="async"
+                        loading="eager"
+                        width="800"
+                        height="600"
+                        hidden
+                      />
+                      <span class="hero-slide-placeholder" id="hobbyHeroSlidePlaceholder">Hobby</span>
+                    </div>
+                    <div class="hero-slide-meta">
+                      <span class="hero-slide-title" id="hobbyHeroSlideTitle"></span>
+                      <span class="hero-slide-cta" id="hobbyHeroSlideCta"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero-slideshow-controls">
+                  <button type="button" class="hero-slideshow-btn hobby-hero-prev" aria-label="Previous hobby photo">
+                    ‹
+                  </button>
+                  <div class="hero-slideshow-dots" id="hobbyHeroSlideshowDots" aria-label="Hobby slide navigation"></div>
+                  <button type="button" class="hero-slideshow-btn hobby-hero-next" aria-label="Next hobby photo">
+                    ›
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <aside class="hero-showcase hero-panel" aria-label="Featured work">
@@ -96,14 +150,19 @@
       <div class="container">
         <h2>Visual Resume</h2>
         <p class="section-lead">
-          A timeline of research, teaching, and product-focused engineering roles.
+          A visual timeline of the research, teaching, and engineering work I have done so far.
         </p>
         <p class="resume-link-row">
-          <a class="text-link" href="assets/Kamron_Soltani_CV.pdf" target="_blank" rel="noopener">Download Full CV</a>
+          <a
+            class="text-link"
+            href="https://www.dropbox.com/scl/fi/zg2gwl0ix9v6lyt12gjvr/CV-Updated_Feb_2026-Google-Docs.pdf?rlkey=z5h2he2933syl29gjqbm6wlgn&amp;st=7spvcyga&amp;dl=1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Download Full CV</a>
         </p>
         <div class="resume-shell is-collapsed" id="resumeShell">
           <div class="resume-timeline" id="resumeTimeline">
-          <article class="resume-event side-left" data-start="2026-02" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2026-02" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Feb 2026 to Present</p>
             <h3>UC Berkeley MechE: research assistant, Morphing Matters Lab</h3>
@@ -118,7 +177,7 @@
               <div class="resume-event-photos" aria-label="Add photos (Morphing Matters lab)"></div>
             </div>
           </article>
-          <article class="resume-event side-right" data-start="2026-01" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-right" data-start="2026-01" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Jan 2026 to Present</p>
             <h3>UC Berkeley MechE: graduate student instructor (ME235)</h3>
@@ -133,7 +192,7 @@
               <div class="resume-event-photos" aria-label="Photos for this role"></div>
             </div>
           </article>
-          <article class="resume-event side-left" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2025 to Present</p>
             <h3>UC Berkeley: M.S. Mechanical Engineering</h3>
@@ -143,7 +202,7 @@
               <div class="resume-event-photos" aria-label="Photos for this role"></div>
             </div>
           </article>
-          <article class="resume-event side-right" data-start="2025-07" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-right" data-start="2025-07" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Jul 2025 to Sep 2025</p>
             <h3>NTU Singapore: Global Connect Fellowship robotics research fellow</h3>
@@ -158,7 +217,7 @@
               <div class="resume-event-photos" data-photo-set="ntu" aria-label="Photos for NTU Singapore"></div>
             </div>
           </article>
-          <article class="resume-event side-left" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2025 to Present</p>
             <h3><a class="text-link" href="project-mangrove-water.html">Mangrove Water</a>: MechE research design engineer</h3>
@@ -174,7 +233,7 @@
               <div class="resume-event-photos" data-photo-set="mangrove" aria-label="Photos for Mangrove Water"></div>
             </div>
           </article>
-          <article class="resume-event side-right" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-right" data-start="2025-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2025 to Present</p>
             <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: graduate student mechanical advisor</h3>
@@ -184,7 +243,7 @@
               <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
             </div>
           </article>
-          <article class="resume-event side-left" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2023 to Dec 2025</p>
             <h3>UC Berkeley MechE: graduate student instructor (ME100)</h3>
@@ -199,7 +258,7 @@
               <div class="resume-event-photos" aria-label="Add photos (ME100)"></div>
             </div>
           </article>
-          <article class="resume-event side-right" data-start="2024-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-right" data-start="2024-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2024 to May 2025</p>
             <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: structures lead</h3>
@@ -209,7 +268,7 @@
               <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
             </div>
           </article>
-          <article class="resume-event side-left" data-start="2024-05" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2024-05" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">May 2024 to Aug 2024</p>
             <h3>Siemens Mobility: ops project controls engineering intern</h3>
@@ -225,7 +284,7 @@
               <div class="resume-event-photos" data-photo-set="siemens" aria-label="Photos for Siemens Mobility"></div>
             </div>
           </article>
-          <article class="resume-event side-right" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-right" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2023 to Jul 2024</p>
             <h3>UC Berkeley CoE: peer advisor</h3>
@@ -240,7 +299,7 @@
               <div class="resume-event-photos" aria-label="Photos for this role"></div>
             </div>
           </article>
-          <article class="resume-event side-left" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2023-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2023 to Aug 2024</p>
             <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: landing gear lead</h3>
@@ -250,7 +309,7 @@
               <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
             </div>
           </article>
-          <article class="resume-event side-right" data-start="2023-01" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-right" data-start="2023-01" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Jan 2023 to May 2023</p>
             <h3>UC Berkeley Dado and Maria Banatao Center for GLOBE: student consultant intern</h3>
@@ -265,7 +324,7 @@
               <div class="resume-event-photos" data-photo-set="globe" aria-label="Photos for GLOBE"></div>
             </div>
           </article>
-          <article class="resume-event side-left" data-start="2022-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2022-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2022 to Aug 2023</p>
             <h3><a class="text-link" href="project-cal-aerospace-sae.html">Cal Aerospace SAE</a>: electrical team member</h3>
@@ -275,7 +334,7 @@
               <div class="resume-event-photos" data-photo-set="cal-aero" aria-label="Photos for Cal Aerospace SAE"></div>
             </div>
           </article>
-          <article class="resume-event side-right" data-start="2022-01" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-right" data-start="2022-01" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Jan 2022 to May 2024</p>
             <h3>Research Technology Learning: assistant program manager</h3>
@@ -291,7 +350,7 @@
               <div class="resume-event-photos" aria-label="Photos for this role"></div>
             </div>
           </article>
-          <article class="resume-event side-left" data-start="2021-08" tabindex="0" role="button" aria-expanded="false">
+          <article class="resume-event rail-tile side-left" data-start="2021-08" tabindex="0" role="button" aria-expanded="false">
             <span class="resume-expand-icon" aria-hidden="true"></span>
             <p class="resume-date">Aug 2021 to May 2025</p>
             <h3>UC Berkeley: B.S. Mechanical Engineering</h3>
@@ -339,14 +398,14 @@
           <a class="text-link" href="design-engineering.html">View All Projects</a>
         </div>
         <p class="section-lead">
-          Same project set as the archive: scroll the rail or open the full index.
+          
         </p>
         <div class="preview-rail">
           <button type="button" class="preview-prev preview-nav" data-track="projectsTrack" aria-label="Show previous projects" disabled>
             ‹
           </button>
           <div class="cards preview-track" id="projectsTrack">
-            <a class="card card--project" id="project-mangrove-water" href="project-mangrove-water.html" data-project-id="project-mangrove-water">
+            <a class="card card--project rail-tile" id="project-mangrove-water" href="project-mangrove-water.html" data-project-id="project-mangrove-water">
               <div class="card-image placeholder">Mangrove Water</div>
               <div class="card-body">
                 <p class="card-label">Water / Public health · 2026</p>
@@ -355,7 +414,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-morphing-dress" href="project-morphing-dress.html" data-project-id="project-morphing-dress">
+            <a class="card card--project rail-tile" id="project-morphing-dress" href="project-morphing-dress.html" data-project-id="project-morphing-dress">
               <div class="card-image placeholder">FormaFlow</div>
               <div class="card-body">
                 <p class="card-label">ME292C · Morphing materials · 2025</p>
@@ -364,7 +423,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-cal-aerospace-sae" href="project-cal-aerospace-sae.html" data-project-id="project-cal-aerospace-sae">
+            <a class="card card--project rail-tile" id="project-cal-aerospace-sae" href="project-cal-aerospace-sae.html" data-project-id="project-cal-aerospace-sae">
               <div class="card-image placeholder">CAL Aerospace</div>
               <div class="card-body">
                 <p class="card-label">Competition team · 2025</p>
@@ -373,7 +432,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-lmks-v1" href="project-lmks-v1.html" data-project-id="project-lmks-v1">
+            <a class="card card--project rail-tile" id="project-lmks-v1" href="project-lmks-v1.html" data-project-id="project-lmks-v1">
               <div class="card-image placeholder">LMKS V1</div>
               <div class="card-body">
                 <p class="card-label">Embedded / optics · 2025</p>
@@ -382,7 +441,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-esp-flight-tracker" href="project-esp-flight-tracker.html" data-project-id="project-esp-flight-tracker">
+            <a class="card card--project rail-tile" id="project-esp-flight-tracker" href="project-esp-flight-tracker.html" data-project-id="project-esp-flight-tracker">
               <div class="card-image placeholder">ESP Flight Tracker</div>
               <div class="card-body">
                 <p class="card-label">Embedded / aviation · 2025</p>
@@ -391,7 +450,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-realtime-insole" href="project-realtime-insole.html" data-project-id="project-realtime-insole">
+            <a class="card card--project rail-tile" id="project-realtime-insole" href="project-realtime-insole.html" data-project-id="project-realtime-insole">
               <div class="card-image placeholder">Insole</div>
               <div class="card-body">
                 <p class="card-label">Wearables / MEC278 · 2025</p>
@@ -400,7 +459,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-me103-sourdough" href="project-me103-sourdough.html" data-project-id="project-me103-sourdough">
+            <a class="card card--project rail-tile" id="project-me103-sourdough" href="project-me103-sourdough.html" data-project-id="project-me103-sourdough">
               <div class="card-image placeholder">ME103</div>
               <div class="card-body">
                 <p class="card-label">Materials · ME103 · 2024</p>
@@ -409,7 +468,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-esp-meter" href="project-esp-meter.html" data-project-id="project-esp-meter">
+            <a class="card card--project rail-tile" id="project-esp-meter" href="project-esp-meter.html" data-project-id="project-esp-meter">
               <div class="card-image placeholder">ESP-Meter</div>
               <div class="card-body">
                 <p class="card-label">Embedded / film · 2025</p>
@@ -418,7 +477,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-me226-fermiq" href="project-me226-fermiq.html" data-project-id="project-me226-fermiq">
+            <a class="card card--project rail-tile" id="project-me226-fermiq" href="project-me226-fermiq.html" data-project-id="project-me226-fermiq">
               <div class="card-image placeholder">FermIQ</div>
               <div class="card-body">
                 <p class="card-label">IoT / ME226 · 2024</p>
@@ -427,7 +486,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-me100-intillifresh" href="project-me100-intillifresh.html" data-project-id="project-me100-intillifresh">
+            <a class="card card--project rail-tile" id="project-me100-intillifresh" href="project-me100-intillifresh.html" data-project-id="project-me100-intillifresh">
               <div class="card-image placeholder">Intillifresh</div>
               <div class="card-body">
                 <p class="card-label">IoT / ME100 · 2023</p>
@@ -436,7 +495,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-me102b-ez-darkroom" href="project-me102b-ez-darkroom.html" data-project-id="project-me102b-ez-darkroom">
+            <a class="card card--project rail-tile" id="project-me102b-ez-darkroom" href="project-me102b-ez-darkroom.html" data-project-id="project-me102b-ez-darkroom">
               <div class="card-image placeholder">EZ-Darkroom</div>
               <div class="card-body">
                 <p class="card-label">Automation / ME102B · 2025</p>
@@ -445,7 +504,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-e29-light-skate" href="project-e29-light-skate.html" data-project-id="project-e29-light-skate">
+            <a class="card card--project rail-tile" id="project-e29-light-skate" href="project-e29-light-skate.html" data-project-id="project-e29-light-skate">
               <div class="card-image placeholder">Light Skate</div>
               <div class="card-body">
                 <p class="card-label">Mobility / E29 · 2022</p>
@@ -454,7 +513,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-me235-candy-crawler" href="project-me235-candy-crawler.html" data-project-id="project-me235-candy-crawler">
+            <a class="card card--project rail-tile" id="project-me235-candy-crawler" href="project-me235-candy-crawler.html" data-project-id="project-me235-candy-crawler">
               <div class="card-image placeholder">Candy Crawler</div>
               <div class="card-body">
                 <p class="card-label">Controls / ME235 · 2024</p>
@@ -463,7 +522,7 @@
                 <p class="card-cta"><span class="card-link-hint">View project →</span></p>
               </div>
             </a>
-            <a class="card card--project" id="project-e26-windmill" href="project-e26-windmill.html" data-project-id="project-e26-windmill">
+            <a class="card card--project rail-tile" id="project-e26-windmill" href="project-e26-windmill.html" data-project-id="project-e26-windmill">
               <div class="card-image placeholder">Windmill</div>
               <div class="card-body">
                 <p class="card-label">CAD / E26 · 2021</p>
@@ -484,11 +543,10 @@
       <div class="container">
         <div class="section-head">
           <h2>Film Photography Preview</h2>
-          <a class="text-link" href="photography.html#film-archive-intro">View film archive</a>
+          <a class="text-link" href="photography.html#film-archive-intro">View Film Gallery</a>
         </div>
         <p class="section-lead">
-          Every roll from <code>film-archive.json</code> (same order as the film archive). Scroll the rail to see more.
-        </p>
+    
         <div class="preview-rail">
           <button type="button" class="preview-prev preview-nav" data-track="photosTrack" aria-label="Show previous photos" disabled>
             ‹
@@ -505,11 +563,9 @@
     <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
-        <p class="section-lead">Let&rsquo;s connect about product design, engineering, and collaboration.</p>
         <div class="contact-links">
-          <a href="mailto:kamron@example.com">Email</a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:kamronsoltani@berkeley.edu">Email</a>
+          <a href="https://www.linkedin.com/in/kamron-soltani" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
     </section>
@@ -524,6 +580,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=hero113"></script>
+  <script src="script.js?v=hero143"></script>
 </body>
 </html>

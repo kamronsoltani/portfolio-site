@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any" />
   <title>Morphing Dress | Kamron Soltani</title>
   <meta name="description" content="FormaFlow morphing dress: ME292C wearables project: ESP32, IMU stair detection, and servo-driven hemline." />
-  <link rel="stylesheet" href="styles.css?v=hero113" />
+  <link rel="stylesheet" href="styles.css?v=hero145" />
 </head>
 <body>
   <header class="site-header">
@@ -26,7 +27,7 @@
         <p class="project-back"><a class="text-link" href="design-engineering.html#project-morphing-dress">← Back to Design &amp; Engineering</a></p>
         <h1>FormaFlow Morphing Dress</h1>
         <p class="project-meta">2025 · ME292C · Morphing materials · Wearables</p>
-        <p class="section-lead">Wearable morphing hemline for stairs and wet ground, ESP32 control, IMU stair detection, and six servos in a layered textile shell.</p>
+        <p class="section-lead">For ME292C, we built a wearable dress that changes its hemline in motion using six servos and a layered textile structure.</p>
         <div class="project-content-split" data-project-lightbox>
           <div class="project-content-primary">
             <div class="project-hero-text-match" aria-label="Project photo">
@@ -57,14 +58,13 @@
             <div class="project-body">
               <h2>Background</h2>
               <p>
-                For <strong>ME292C</strong> (Design of Morphing Matters and Materials) with Professor Yao, we drew on her textiles and wearables research. The dress moves its hemline dynamically to improve mobility while walking and climbing stairs and to avoid ground contact in wet environments, functional utility with flowing motion.
-              </p>
+                This project came out of Professor Yao's Design of Morphing Matters and Materials course. We designed a dress that adjusts its hemline while you move, so it lifts during walking or stair climbing to avoid dragging through wet or dirty ground. The goal was functional, but we also cared about making the motion feel natural and not like a robotic gimmick.              </p>
               <h2>Technical architecture</h2>
               <p>
-                Six <strong>SG90MR</strong> servo motors drive the mechanism: four lift tiled segments while two drive octopus-inspired flippers for outward curl. An <strong>ESP32</strong> wireless remote provides three modes (walk lift, stair auto-lift, and manual tuning), with <strong>IMU</strong> stair detection triggering automatic lifting through accelerometer classification.
+                Six <strong>SG90MR</strong> servo motors run the mechanism. Four lift tiled segments and two control octopus inspired flippers that curl outward. An <strong>ESP32</strong> wireless remote handles three modes, walk lift, stair auto lift, and manual tuning. <strong>IMU</strong> based stair detection triggers automatic lifting from accelerometer data.
               </p>
               <p>
-                The garment uses double-layer construction to conceal mechanisms, with taped-thread stoppers for repeatable folds. The system achieves <strong>120&nbsp;mm</strong> lift height to eliminate ground contact with under <strong>50&nbsp;ms</strong> wireless response latency.
+                The garment uses a double layer construction to hide the mechanism, plus taped thread stoppers to keep folds repeatable. The system reaches about <strong>120&nbsp;mm</strong> of lift height, enough to prevent ground contact, with wireless response under <strong>50&nbsp;ms</strong>.
               </p>
             </div>
           </div>
@@ -166,6 +166,6 @@
       <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
     </div>
   </footer>
-  <script src="script.js?v=hero113"></script>
+  <script src="script.js?v=hero143"></script>
 </body>
 </html>

@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any" />
   <title>LMKS V1 Light Meter | Kamron Soltani</title>
   <meta name="description" content="LMKS V1: ESP32-C3 custom PCB, BH1750, SSD1306 OLED, and SolidWorks enclosure in a 35×35mm smart light meter." />
-  <link rel="stylesheet" href="styles.css?v=hero113" />
+  <link rel="stylesheet" href="styles.css?v=hero145" />
 </head>
 <body>
   <header class="site-header">
@@ -26,7 +27,7 @@
         <p class="project-back"><a class="text-link" href="design-engineering.html#project-lmks-v1">← Back to Design &amp; Engineering</a></p>
         <h1>LMKS V1 Light Meter</h1>
         <p class="project-meta">2025 · ESP32-C3 · Custom PCB · Enclosure</p>
-        <p class="section-lead">ESP32 custom PCB and case: integrated smart light meter shrunk to a compact 35×35mm footprint.</p>
+        <p class="section-lead">I built LMKS V1 to shrink my earlier light meter into a compact custom PCB and enclosure that can sit directly on a camera hot shoe.</p>
         <div class="project-content-split" data-project-lightbox>
           <div class="project-content-primary">
             <div class="project-hero-text-match" aria-label="Project photo">
@@ -49,14 +50,14 @@
             <div class="project-body">
               <h2>Background</h2>
               <p>
-                For this project, I wanted to take the light meter I built in June&nbsp;2025 and shrink it into a much smaller form factor. In <strong>KiCad</strong> I laid out a custom <strong>2-layer PCB</strong> within a <strong>35×35&nbsp;mm</strong> footprint. An <strong>ESP32-C3</strong> anchors the design with mostly <strong>SMD</strong> parts, including a <strong>BH1750</strong> light sensor and <strong>SSD1306</strong> OLED. I had to create custom footprints for several of the components to get the layout exactly right on such a small board.
+                I started this project because I wanted to miniaturize the light meter I built in June&nbsp;2025. In <strong>KiCad</strong>, I laid out a custom <strong>2 layer PCB</strong> in a <strong>35×35&nbsp;mm</strong> footprint. The board is centered around an <strong>ESP32-C3</strong> with mostly <strong>SMD</strong> parts, including a <strong>BH1750</strong> light sensor and <strong>SSD1306</strong> OLED. I had to make custom footprints for several components to fit everything cleanly in that small area.
               </p>
               <p>
-                Once the electronics were set, I used <strong>SolidWorks</strong> to design a case that fit the hardware. I focused on building custom physical toggles and specific attachments for the rotary encoder so that the moving parts would line up and interact correctly with the components on the PCB. The final result is a much more portable version of the original tool that maintains all the same functionality in a fraction of the size.
+                Once the board was finalized, I designed the enclosure in Solidworks around the real hardware stack. I built custom toggles and rotary encoder attachments so the mechanical controls lined up correctly with the PCB components. The final result is a smaller and more portable light meter that fits on the hot shoe of a film camera.
               </p>
               <h2>Technical architecture</h2>
               <p>
-                The V1 stack pairs a compact custom PCB with a SolidWorks enclosure: SMD-first layout, BH1750 sensing, SSD1306 readout, and USB-C connectivity. Control combines a rotary encoder, tactile switches, and printed toggle extensions aligned to the board.
+                V1 combines a compact custom PCB with a SolidWorks enclosure, with BH1750 sensing, SSD1306 readout, and USB C connectivity. Controls use a rotary encoder, tactile switches, and printed toggle extensions aligned to the board.
               </p>
               <h3>Core electronics</h3>
               <ul class="project-spec-list">
@@ -72,9 +73,9 @@
                 <li><strong>Buttons:</strong> SMD tactile switches</li>
                 <li><strong>Custom toggles:</strong> 3D printed mechanical toggle extensions</li>
               </ul>
-              <h3>LMKS V2 roadmap</h3>
+              <h2>Roadmap</h2>
               <p>
-                A planned <strong>LMKS V2 (May 2026)</strong> revision targets lower power and updated sensing: STM32L072x8, 350mAh LiPo, VEML7700 lux sensor, and an Alps navigation wheel.
+                LMKS V2 is planned for May 2026 with lower power draw, improved light sensing, and a smaller footprint. The update targets an STM32L072x8, a 350mAh LiPo, a VEML7700 lux sensor, and an Alps navigation wheel. I plan to prepare this version for market release and certification in the United States.
               </p>
               <ul class="project-spec-list">
                 <li><strong>MCU:</strong> STM32L072x8 (lower power consumption)</li>
@@ -170,6 +171,6 @@
       <p class="site-footer-note">Site design influenced by 1970s San Francisco Muni logo and transit graphics.</p>
     </div>
   </footer>
-  <script src="script.js?v=hero113"></script>
+  <script src="script.js?v=hero143"></script>
 </body>
 </html>

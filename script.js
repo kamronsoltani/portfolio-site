@@ -55,43 +55,43 @@ function encodeAssetPath(rel) {
  */
 const RESUME_PHOTO_SETS = {
   mangrove: [
-    { src: "assets/design/Mangrove/main%20image.png", cap: "Turi-Tap system render" },
-    { src: "assets/design/Mangrove/turipump0.png", cap: "CAD iteration" },
-    { src: "assets/design/Mangrove/fieldtest1.jpg", cap: "Field testing" },
+    { src: "assets/design/Mangrove/main%20image.png", cap: "Turi-Tap System Render" },
+    { src: "assets/design/Mangrove/turipump0.png", cap: "CAD Iteration" },
+    { src: "assets/design/Mangrove/fieldtest1.jpg", cap: "Field Testing" },
   ],
   "cal-aero": [
-    { src: "assets/design/Cal Aero SAE/2025 plane flying.jpeg", cap: "Competition flight" },
-    { src: "assets/design/Cal Aero SAE/landing gear.png", cap: "Landing gear" },
-    { src: "assets/design/Cal Aero SAE/manufacturing session.jpeg", cap: "Build and integration" },
+    { src: "assets/design/Cal Aero SAE/2025 plane flying.jpeg", cap: "Competition Flight" },
+    { src: "assets/design/Cal Aero SAE/landing gear.png", cap: "Landing Gear" },
+    { src: "assets/design/Cal Aero SAE/manufacturing session.jpeg", cap: "Build and Integration" },
   ],
   ntu: [
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/Xie Ming.jpeg"), cap: "Prof. Xie Ming" },
+    { src: encodeAssetPath("assets/images/Visual Resume/NTU/Xie Ming.jpeg"), cap: "Poster Presentation" },
     { src: encodeAssetPath("assets/images/Visual Resume/NTU/Certificate.jpeg"), cap: "Certificate" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320011.jpeg"), cap: "NTU" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320035.jpeg"), cap: "NTU" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320036.jpeg"), cap: "NTU" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000097660007.jpeg"), cap: "NTU" },
+    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320011.jpeg"), cap: "MBS" },
+    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320035.jpeg"), cap: "SG60" },
+    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320036.jpeg"), cap: "LADs" },
+    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000097660007.jpeg"), cap: "Ce La Vie" },
   ],
   siemens: [
-    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_0080.jpeg"), cap: "Siemens Mobility" },
-    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_4691.jpeg"), cap: "Siemens Mobility" },
-    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_6089.jpeg"), cap: "Siemens Mobility" },
+    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_0080.jpeg"), cap: "Venture Car Manufacturing" },
+    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_4691.jpeg"), cap: "ALC42" },
+    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_6089.jpeg"), cap: "Intern Cohort" },
   ],
   globe: [
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4577.jpeg"), cap: "GLOBE" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4594.jpeg"), cap: "GLOBE" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4605.jpeg"), cap: "GLOBE" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4621.jpeg"), cap: "GLOBE" },
+    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4577.jpeg"), cap: "7/11" },
+    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4594.jpeg"), cap: "Fun Architecture" },
+    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4605.jpeg"), cap: "Night Market" },
+    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4621.jpeg"), cap: "Night Market II" },
     { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/HTC Vive.jpeg"), cap: "HTC Vive" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/Group Phoro.jpeg"), cap: "Group photo" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/group photo 2.jpeg"), cap: "Group photo" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/group photo 3.jpeg"), cap: "Group photo" },
+    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/Group Phoro.jpeg"), cap: "CAPRI" },
+    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/group photo 2.jpeg"), cap: "HTC" },
+    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/group photo 3.jpeg"), cap: "TMU Hospital" },
   ],
 };
 
 /** Film archive album covers: updated when film-archive.json loads (fallback for first paint). */
 const FILM_ALBUM_COVER_SRC = {
-  "album-yosemite": "assets/images/Yosemite/elcap-01.jpg",
+  "album-yosemite": "assets/images/Yosemite/1.jpg",
   "album-istanbul": encodeAssetPath("assets/images/Film Photos/Istanbul/1.jpeg"),
   "album-roll-05": "assets/film-rolls/roll-05/cover.svg",
 };
@@ -144,7 +144,7 @@ function normalizeFilmArchive(raw) {
 
 async function loadFilmArchivePayload() {
   try {
-    const res = await fetch(`${FILM_ARCHIVE_URL}?v=hero113`, { cache: "no-store" });
+    const res = await fetch(`${FILM_ARCHIVE_URL}?v=hero143`, { cache: "no-store" });
     if (!res.ok) return null;
     return normalizeFilmArchive(await res.json());
   } catch (_) {
@@ -169,7 +169,7 @@ function renderHomeFilmRail(track, albums) {
     if (!file) return;
     const href = filmRollPageHref(album);
     const a = document.createElement("a");
-    a.className = "gallery-item gallery-item--thumb";
+    a.className = "gallery-item gallery-item--thumb rail-tile";
     a.href = href;
     a.setAttribute("aria-label", `Open film roll: ${album.title}`);
     const img = document.createElement("img");
@@ -872,27 +872,80 @@ function initPhotoAlbumCovers() {
   });
 }
 
-/** Random peek photos in assets/images/peek/ */
-const HERO_PEEK_IMAGES = [
-  "assets/images/peek/092f6228-5906-45b7-be4d-d832dbbc4e0e.jpg",
-  "assets/images/peek/IMG_3028.jpeg",
-  "assets/images/peek/IMG_3273.jpeg",
-  "assets/images/peek/IMG_5864.jpeg",
-  "assets/images/peek/IMG_8922.jpeg",
-];
+/** Kamron name peek: one image in assets/images/peek/ */
+const HERO_PEEK_IMAGES = [encodeAssetPath("assets/images/peek/65041-1-0036.jpeg")];
+
+/**
+ * Hobby carousel: folders under assets/images/ (Legos, Sourdough, Sacramento Kings, Van Hool, Transit Nerd).
+ * encodeAssetPath handles spaces in folder names.
+ */
+const HOBBY_SLIDES = {
+  sourdough: {
+    label: "Sourdough baker",
+    photos: [
+      encodeAssetPath("assets/images/Sourdough/IMG_0756.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_3805.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_3815.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_5864.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_5906.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_6196.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_6512.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_6520.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_6526.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_6850.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_6860.jpeg"),
+      encodeAssetPath("assets/images/Sourdough/IMG_7287.jpeg"),
+    ],
+  },
+  lego: {
+    label: "Lego builder",
+    photos: [
+      encodeAssetPath("assets/images/Legos/IMG_0878.jpeg"),
+      encodeAssetPath("assets/images/Legos/IMG_0880.jpeg"),
+      encodeAssetPath("assets/images/Legos/IMG_4542.jpeg"),
+      encodeAssetPath("assets/images/Legos/IMG_5990.jpeg"),
+      encodeAssetPath("assets/images/Legos/IMG_7205.jpeg"),
+      encodeAssetPath("assets/images/Legos/img20231026_18350381.jpeg"),
+    ],
+  },
+  kings: {
+    label: "Sacramento Kings fan",
+    photos: [
+      encodeAssetPath("assets/images/Sacramento Kings/IMG_4073.jpeg"),
+      encodeAssetPath("assets/images/Sacramento Kings/IMG_4550.jpeg"),
+      encodeAssetPath("assets/images/Sacramento Kings/IMG_7555.jpeg"),
+      encodeAssetPath("assets/images/Sacramento Kings/IMG_8826.jpeg"),
+    ],
+  },
+  ag300: {
+    label: "Van Hool AG300 enthusiast",
+    photos: [encodeAssetPath("assets/images/Van Hool/hq720.jpg")],
+  },
+  transit: {
+    label: "Transit nerd",
+    photos: [
+      encodeAssetPath("assets/images/Transit Nerd/000015100013.jpeg"),
+      encodeAssetPath("assets/images/Transit Nerd/IMG_6089.jpeg"),
+      encodeAssetPath("assets/images/Transit Nerd/IMG_6693.jpeg"),
+      encodeAssetPath("assets/images/Transit Nerd/IMG_8193.jpeg"),
+      encodeAssetPath("assets/images/Transit Nerd/IMG_8202.jpeg"),
+      encodeAssetPath("assets/images/Transit Nerd/IMG_8378.jpeg"),
+      encodeAssetPath("assets/images/Transit Nerd/img20231026_18294278.jpeg"),
+      encodeAssetPath("assets/images/Transit Nerd/img20231026_18320794.jpeg"),
+    ],
+  },
+};
 
 function initHeroNamePeek() {
   const hit = document.getElementById("heroNameHit");
   const peek = document.getElementById("heroPeek");
   const img = document.getElementById("heroPeekImg");
-  if (!hit || !peek || !img || !HERO_PEEK_IMAGES.length) return;
+  if (!hit) return;
 
-  const TAP_MS = 320;
-  const PEEK_TAP_VISIBLE_MS = 950;
+  const hasPeek = Boolean(peek && img && HERO_PEEK_IMAGES.length);
 
+  const FLASH_MS = 500;
   let hideTimer = null;
-  let downAt = 0;
-  let pressed = false;
 
   function clearHideTimer() {
     if (hideTimer) {
@@ -903,69 +956,231 @@ function initHeroNamePeek() {
 
   function hidePeek() {
     clearHideTimer();
-    peek.classList.remove("is-out");
-    pressed = false;
+    peek?.classList.remove("is-flash");
   }
 
   function pickSrc() {
     return HERO_PEEK_IMAGES[Math.floor(Math.random() * HERO_PEEK_IMAGES.length)];
   }
 
-  function showPeek() {
-    img.src = pickSrc();
-    peek.classList.add("is-out");
+  function flashPeek(forceSrc = "") {
+    if (!hasPeek) return;
+    img.src = forceSrc || pickSrc();
+    peek.classList.add("is-flash");
+    clearHideTimer();
+    hideTimer = setTimeout(hidePeek, FLASH_MS);
   }
 
-  img.addEventListener("error", () => {
-    hidePeek();
-  });
-
-  hit.addEventListener("pointerdown", (e) => {
-    if (e.pointerType === "mouse" && e.button !== 0) return;
-    e.preventDefault();
-    pressed = true;
-    downAt = Date.now();
-    clearHideTimer();
-    try {
-      hit.setPointerCapture(e.pointerId);
-    } catch (_) {
-      /* ignore */
-    }
-    showPeek();
-  });
-
-  hit.addEventListener("pointerup", (e) => {
-    if (!pressed) return;
-    pressed = false;
-    try {
-      if (hit.hasPointerCapture(e.pointerId)) {
-        hit.releasePointerCapture(e.pointerId);
-      }
-    } catch (_) {
-      /* ignore */
-    }
-
-    const dur = Date.now() - downAt;
-    clearHideTimer();
-    if (dur < TAP_MS) {
-      hideTimer = setTimeout(hidePeek, Math.max(0, PEEK_TAP_VISIBLE_MS - dur));
-    } else {
+  if (hasPeek) {
+    img.addEventListener("error", () => {
       hidePeek();
-    }
-  });
+    });
+  }
 
-  hit.addEventListener("pointercancel", () => {
-    clearHideTimer();
-    pressed = false;
-    hidePeek();
+  hit.addEventListener("click", (e) => {
+    e.preventDefault();
+    flashPeek();
   });
 
   hit.addEventListener("keydown", (e) => {
     if (e.key !== "Enter" && e.key !== " ") return;
     e.preventDefault();
-    showPeek();
-    clearHideTimer();
-    hideTimer = setTimeout(hidePeek, PEEK_TAP_VISIBLE_MS);
+    flashPeek();
+  });
+}
+
+function initHobbyHeroSlideshow() {
+  const panel = document.getElementById("heroCopyPanel");
+  const hobbyRoot = document.getElementById("heroHobbyFill");
+  const backBtn = document.getElementById("hobbySlideshowBack");
+  const slideMedia = document.getElementById("hobbyHeroSlideMedia");
+  const slideImg = document.getElementById("hobbyHeroSlideImg");
+  const slidePlaceholder = document.getElementById("hobbyHeroSlidePlaceholder");
+  const slideTitle = document.getElementById("hobbyHeroSlideTitle");
+  const slideCta = document.getElementById("hobbyHeroSlideCta");
+  const dotsContainer = document.getElementById("hobbyHeroSlideshowDots");
+  const prevBtn = document.querySelector(".hobby-hero-prev");
+  const nextBtn = document.querySelector(".hobby-hero-next");
+  const triggers = [...document.querySelectorAll(".hobby-trigger[data-hobby-key]")];
+
+  if (!panel || !hobbyRoot || !backBtn || !slideMedia || !slideImg || !slidePlaceholder || !slideTitle || !slideCta || !dotsContainer || !triggers.length) {
+    return;
+  }
+
+  let activeKey = "";
+  let photos = [];
+  let index = 0;
+
+  function shortLabel(key) {
+    const map = {
+      sourdough: "Sourdough",
+      lego: "Lego",
+      kings: "Kings",
+      ag300: "AG300",
+      transit: "Transit",
+    };
+    return map[key] || "Hobby";
+  }
+
+  /** Same pattern as `initProjectGalleryLightbox` / resume lightbox: drive a real <img> with .src */
+  function setSlideImage(src, fallbackLabel) {
+    slideMedia.style.backgroundImage = "none";
+    if (!src || typeof src !== "string") {
+      slideImg.removeAttribute("src");
+      slideImg.hidden = true;
+      slideImg.alt = "";
+      slideMedia.classList.remove("has-photo");
+      slidePlaceholder.textContent = fallbackLabel;
+      return;
+    }
+    slideImg.alt = fallbackLabel;
+    slideImg.decoding = "async";
+    slideImg.onerror = () => {
+      slideImg.removeAttribute("src");
+      slideImg.hidden = true;
+      slideMedia.classList.remove("has-photo");
+      slidePlaceholder.textContent = fallbackLabel;
+    };
+    slideImg.hidden = false;
+    slideImg.src = src;
+    slideMedia.classList.add("has-photo");
+  }
+
+  function renderDots() {
+    if (!photos.length) {
+      dotsContainer.replaceChildren();
+      delete dotsContainer.dataset.hobbyDotsFor;
+      return;
+    }
+    const needRebuild =
+      dotsContainer.children.length !== photos.length ||
+      dotsContainer.dataset.hobbyDotsFor !== activeKey;
+
+    if (needRebuild) {
+      dotsContainer.replaceChildren();
+      dotsContainer.dataset.hobbyDotsFor = activeKey;
+      photos.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "hero-slideshow-dot";
+        dot.setAttribute("aria-label", `Hobby photo ${i + 1}`);
+        dot.addEventListener("click", (e) => {
+          e.preventDefault();
+          index = i;
+          applySlide();
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    dotsContainer.querySelectorAll(".hero-slideshow-dot").forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === index);
+      dot.setAttribute("aria-current", i === index ? "true" : "false");
+    });
+  }
+
+  function applySlide() {
+    const config = HOBBY_SLIDES[activeKey];
+    const label = config?.label || "Hobby";
+
+    if (!photos.length) {
+      slideTitle.textContent = label;
+      slideCta.textContent = "Add photos in HOBBY_SLIDES";
+      slideCta.hidden = false;
+      setSlideImage("", shortLabel(activeKey));
+      slidePlaceholder.textContent = "Photos";
+      if (prevBtn) prevBtn.disabled = true;
+      if (nextBtn) nextBtn.disabled = true;
+      renderDots();
+      return;
+    }
+
+    slideTitle.textContent = label;
+    if (photos.length > 1) {
+      slideCta.textContent = `${index + 1} / ${photos.length}`;
+      slideCta.hidden = false;
+    } else {
+      slideCta.textContent = "";
+      slideCta.hidden = true;
+    }
+
+    const src = photos[index];
+    const resolved = resolveDocRelativeUrl(src);
+    setSlideImage(resolved, shortLabel(activeKey));
+    slidePlaceholder.textContent = shortLabel(activeKey);
+
+    if (prevBtn) prevBtn.disabled = photos.length <= 1;
+    if (nextBtn) nextBtn.disabled = photos.length <= 1;
+
+    renderDots();
+  }
+
+  function openHobby(key) {
+    const config = HOBBY_SLIDES[key];
+    if (!config) return;
+    activeKey = key;
+    photos = (config.photos || []).filter(Boolean);
+    index = 0;
+    panel.classList.add("is-hobby-mode");
+    hobbyRoot.setAttribute("aria-hidden", "false");
+    applySlide();
+    hobbyRoot.focus();
+  }
+
+  function closeHobby() {
+    panel.classList.remove("is-hobby-mode");
+    hobbyRoot.setAttribute("aria-hidden", "true");
+    activeKey = "";
+    photos = [];
+    index = 0;
+    slideMedia.style.backgroundImage = "none";
+    slideImg.removeAttribute("src");
+    slideImg.hidden = true;
+    slideImg.alt = "";
+    slideMedia.classList.remove("has-photo");
+    slideTitle.textContent = "";
+    slideCta.textContent = "";
+    slideCta.hidden = false;
+    dotsContainer.replaceChildren();
+    delete dotsContainer.dataset.hobbyDotsFor;
+  }
+
+  triggers.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openHobby(btn.dataset.hobbyKey || "");
+    });
+  });
+
+  backBtn.addEventListener("click", () => closeHobby());
+
+  prevBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (photos.length <= 1) return;
+    index = (index - 1 + photos.length) % photos.length;
+    applySlide();
+  });
+
+  nextBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (photos.length <= 1) return;
+    index = (index + 1) % photos.length;
+    applySlide();
+  });
+
+  hobbyRoot.setAttribute("tabindex", "0");
+  hobbyRoot.addEventListener("keydown", (e) => {
+    if (!panel.classList.contains("is-hobby-mode")) return;
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      prevBtn?.click();
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      nextBtn?.click();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      closeHobby();
+    }
   });
 }
 
@@ -1017,19 +1232,32 @@ function initHeroSlideshow() {
       slidePlaceholder.textContent = fallbackLabel;
       return;
     }
-    const img = new Image();
-    img.onload = () => {
-      slideMedia.style.backgroundImage = `url("${src}")`;
-      slideMedia.classList.add("has-photo");
-      slideMedia.classList.remove("no-photo");
-    };
-    img.onerror = () => {
+    slideMedia.style.backgroundImage = `url(${JSON.stringify(src)})`;
+    slideMedia.classList.add("has-photo");
+    slideMedia.classList.remove("no-photo");
+    const probe = new Image();
+    probe.decoding = "async";
+    probe.onload = () => {};
+    probe.onerror = () => {
       slideMedia.style.backgroundImage = "none";
       slideMedia.classList.remove("has-photo");
       slideMedia.classList.add("no-photo");
       slidePlaceholder.textContent = fallbackLabel;
     };
-    img.src = src;
+    probe.src = src;
+  }
+
+  function prefetchHeroNeighbors() {
+    if (slides.length < 2) return;
+    const nextIdx = (index + 1) % slides.length;
+    const prevIdx = (index - 1 + slides.length) % slides.length;
+    [nextIdx, prevIdx].forEach((i) => {
+      const url = resolveDocRelativeUrl(slides[i].image);
+      if (!url) return;
+      const im = new Image();
+      im.decoding = "async";
+      im.src = url;
+    });
   }
 
   function applySlide(i) {
@@ -1039,12 +1267,15 @@ function initHeroSlideshow() {
     slideTitle.textContent = current.title;
     slidePlaceholder.textContent = current.short;
     if (slideCta) slideCta.textContent = current.cta || "Open →";
-    setSlideImage(current.image, current.short);
+    const resolved = resolveDocRelativeUrl(current.image);
+    setSlideImage(resolved, current.short);
 
     [...dotsContainer.querySelectorAll(".hero-slideshow-dot")].forEach((dot, j) => {
       dot.classList.toggle("is-active", j === index);
       dot.setAttribute("aria-current", j === index ? "true" : "false");
     });
+
+    prefetchHeroNeighbors();
   }
 
   slides.forEach((item, i) => {
@@ -1121,6 +1352,7 @@ initDesignArchiveThumbs();
 initHomeProjectPreviews();
 initPhotoAlbumCovers();
 initHeroNamePeek();
+initHobbyHeroSlideshow();
 initHeroSlideshow();
 
 function initPreviewRails() {
@@ -2008,6 +2240,101 @@ function initProjectGalleryLightbox() {
 
 initProjectGalleryLightbox();
 
+/** Type muni (bus) or bart (train) on the keyboard for a one-off roll-by; skips inputs. */
+function initTransitTypingEggs() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let buf = "";
+  let lastTs = 0;
+  const maxGapMs = 1800;
+
+  function transitEggBusy() {
+    return document.body.dataset.transitEggLock === "1";
+  }
+
+  function setTransitEggLock(on) {
+    document.body.dataset.transitEggLock = on ? "1" : "";
+  }
+
+  function playTransitRoll(kind) {
+    if (transitEggBusy()) return;
+    setTransitEggLock(true);
+    const layer = document.createElement("div");
+    layer.className = "transit-egg-layer";
+    layer.setAttribute("role", "presentation");
+    layer.setAttribute("aria-hidden", "true");
+    const vehicle = document.createElement("div");
+    vehicle.className =
+      kind === "train"
+        ? "transit-egg-vehicle transit-egg-vehicle--train"
+        : "transit-egg-vehicle transit-egg-vehicle--bus";
+    layer.appendChild(vehicle);
+    document.body.appendChild(layer);
+
+    const cleanup = () => {
+      layer.remove();
+      setTransitEggLock(false);
+    };
+    vehicle.addEventListener("animationend", cleanup, { once: true });
+    window.setTimeout(cleanup, 4200);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const el = e.target;
+    if (el instanceof HTMLElement) {
+      const tag = el.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el.isContentEditable) return;
+    }
+    const now = Date.now();
+    if (now - lastTs > maxGapMs) buf = "";
+    lastTs = now;
+    if (e.key.length !== 1) return;
+    buf = (buf + e.key.toLowerCase()).slice(-12);
+    if (buf.endsWith("muni")) {
+      buf = "";
+      playTransitRoll("bus");
+    } else if (buf.endsWith("bart")) {
+      buf = "";
+      playTransitRoll("train");
+    }
+  });
+}
+
+function initQuirkyMotion() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
+  document.body.classList.add("fx-ready");
+
+  /* Omit `.rail-tile`: scroll-reveal sets transform/transition on `.anim-reveal` and overrides rail hover lift */
+  const revealTargets = [
+    ...document.querySelectorAll(".hero-panel"),
+    ...document.querySelectorAll(".section h2"),
+    ...document.querySelectorAll(".card:not(.rail-tile)"),
+    ...document.querySelectorAll(".gallery-item--thumb:not(.rail-tile)"),
+    ...document.querySelectorAll(".resume-event:not(.rail-tile)"),
+  ];
+
+  revealTargets.forEach((el, idx) => {
+    el.classList.add("anim-reveal");
+    el.style.setProperty("--reveal-delay", `${Math.min((idx % 8) * 35, 210)}ms`);
+  });
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  revealTargets.forEach((el) => io.observe(el));
+}
+
 initFilmArchiveRuntime()
   .catch((err) => {
     console.warn("Film archive:", err);
@@ -2015,6 +2342,11 @@ initFilmArchiveRuntime()
   .finally(() => {
     window.dispatchEvent(new Event("resize"));
   });
+
+initQuirkyMotion();
+
+initMuniCuratorEgg();
+initTransitTypingEggs();
 
 window.addEventListener("mousedown", (event) => {
   const burst = document.createElement("span");
