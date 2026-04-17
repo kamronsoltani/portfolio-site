@@ -2850,7 +2850,8 @@ body.fx-ready .rail-tile.anim-reveal.is-in:not(.resume-event--expanded):hover {
   .hero-grid {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "about";
+      "about"
+      "featured";
   }
   .hero-slideshow-viewport {
     height: min(340px, 48vh);
