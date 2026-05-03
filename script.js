@@ -29,6 +29,7 @@ if (menuButton && nav) {
 const PROJECT_HERO_SRC = {
   "project-mangrove-water": "assets/design/Mangrove/main image.png",
   "project-morphing-dress": "assets/design/Formaflow/display/mainphoto.jpeg",
+  "project-smart-goniometer": "assets/design/Smart-Goniometer/1.jpeg",
   "project-cal-aerospace-sae": "assets/design/Cal Aero SAE/2025 plane flying.jpeg",
   "project-lmks-v1": "assets/design/LMKS/mainphoto.png",
   "project-me103-sourdough": "assets/design/Sourdough/sourdough main.png",
@@ -733,7 +734,7 @@ async function initFilmArchiveRuntime() {
   albumsState.slice(0, 2).forEach((album, i) => {
     if (!album?.photos?.[0]) return;
     FILM_ALBUM_COVER_SRC[album.id] = filmPhotoUrl(album.folder, album.photos[0]);
-    heroFilmSlidePatch?.(4 + i, {
+    heroFilmSlidePatch?.(5 + i, {
       href: filmRollPageHref(album),
       image: filmPhotoUrl(album.folder, album.photos[0]),
       title: `${album.title}: film`,
@@ -1199,12 +1200,13 @@ function initHeroSlideshow() {
 
   if (!slideLink || !slideMedia || !slideTitle || !slidePlaceholder || !dotsContainer) return;
 
-  /** Slides 0–3: engineering. Slides 4–5: two most recent film rolls (patched from film-archive.json). */
+  /** Slides 0–4: engineering. Slides 5–6: two most recent film rolls (patched from film-archive.json). */
   const slides = [
     { title: "Mangrove Water", short: "Mangrove", href: "project-mangrove-water.html", image: PROJECT_HERO_SRC["project-mangrove-water"], cta: "Open project →" },
     { title: "FormaFlow Morphing Dress", short: "FormaFlow", href: "project-morphing-dress.html", image: PROJECT_HERO_SRC["project-morphing-dress"], cta: "Open project →" },
-    { title: "CAL Aerospace SAE: RC plane", short: "Cal Aero", href: "project-cal-aerospace-sae.html", image: PROJECT_HERO_SRC["project-cal-aerospace-sae"], cta: "Open project →" },
     { title: "LMKS V1 light meter", short: "LMKS", href: "project-lmks-v1.html", image: PROJECT_HERO_SRC["project-lmks-v1"], cta: "Open project →" },
+    { title: "CAL Aerospace SAE: RC plane", short: "Cal Aero", href: "project-cal-aerospace-sae.html", image: PROJECT_HERO_SRC["project-cal-aerospace-sae"], cta: "Open project →" },
+    { title: "Smart Goniometer", short: "Goniometer", href: "project-smart-goniometer.html", image: PROJECT_HERO_SRC["project-smart-goniometer"], cta: "Open project →" },
     {
       title: "Yosemite: film",
       short: "Film",
@@ -1227,7 +1229,7 @@ function initHeroSlideshow() {
   function setSlideImage(src, fallbackLabel) {
     if (!src || typeof src !== "string") {
       slideMedia.style.backgroundImage = "none";
-      slideMedia.classList.remove("has-photo");
+      slideMedia.classList.remove("has-photo", "hero-slide-media--asset-toned");
       slideMedia.classList.add("no-photo");
       slidePlaceholder.textContent = fallbackLabel;
       return;
@@ -1235,12 +1237,16 @@ function initHeroSlideshow() {
     slideMedia.style.backgroundImage = `url(${JSON.stringify(src)})`;
     slideMedia.classList.add("has-photo");
     slideMedia.classList.remove("no-photo");
+    slideMedia.classList.toggle(
+      "hero-slide-media--asset-toned",
+      src.includes("Smart-Goniometer") && src.includes("1.jpeg")
+    );
     const probe = new Image();
     probe.decoding = "async";
     probe.onload = () => {};
     probe.onerror = () => {
       slideMedia.style.backgroundImage = "none";
-      slideMedia.classList.remove("has-photo");
+      slideMedia.classList.remove("has-photo", "hero-slide-media--asset-toned");
       slideMedia.classList.add("no-photo");
       slidePlaceholder.textContent = fallbackLabel;
     };
@@ -2161,8 +2167,10 @@ function initProjectGalleryLightbox() {
         else if (s.aspect === "four-three") vimeoWrap.classList.add("project-lightbox-vimeo--four-three");
         else vimeoWrap.classList.add("project-lightbox-vimeo--land");
         vimeoIframe.title = s.alt || "Vimeo video";
+        /* Tiles stay chromeless (background=1 in page HTML). Lightbox uses full player UI after explicit click. */
         vimeoIframe.src = vimeoUrlWithParams(s.src, {
-          background: "1",
+          background: "0",
+          autopause: "0",
         });
       } else if (s.type === "video") {
         clearVimeo();
@@ -2302,37 +2310,6 @@ function initTransitTypingEggs() {
 }
 
 function initQuirkyMotion() {
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion) return;
-
-  document.body.classList.add("fx-ready");
-
-  /* Omit `.rail-tile`: scroll-reveal sets transform/transition on `.anim-reveal` and overrides rail hover lift */
-  const revealTargets = [
-    ...document.querySelectorAll(".hero-panel"),
-    ...document.querySelectorAll(".section h2"),
-    ...document.querySelectorAll(".card:not(.rail-tile)"),
-    ...document.querySelectorAll(".gallery-item--thumb:not(.rail-tile)"),
-    ...document.querySelectorAll(".resume-event:not(.rail-tile)"),
-  ];
-
-  revealTargets.forEach((el, idx) => {
-    el.classList.add("anim-reveal");
-    el.style.setProperty("--reveal-delay", `${Math.min((idx % 8) * 35, 210)}ms`);
-  });
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-in");
-        io.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-  );
-
-  revealTargets.forEach((el) => io.observe(el));
 }
 
 initFilmArchiveRuntime()
