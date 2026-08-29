@@ -133,8 +133,22 @@ let heroFilmSlidePatch = null;
 function filmPhotoUrl(folder, file, width) {
   const base = (folder || "").replace(/\/?$/, "/");
   const local = `${base}${file}`;
-  const w = width || (window.PORTFOLIO_MEDIA?.config?.widths?.thumb ?? 500);
-  return mediaUrl(local, { width: w });
+  const w = width || (window.PORTFOLIO_MEDIA?.config?.widths?.thumb ?? 280);
+  if (window.PORTFOLIO_MEDIA?.thumbUrl) {
+    return window.PORTFOLIO_MEDIA.thumbUrl(local, w);
+  }
+  return mediaUrl(local, { width: w, quality: "auto:eco" });
+}
+
+function applyMediaImg(img, localPath, opts = {}) {
+  if (window.PORTFOLIO_MEDIA?.setImgMedia) {
+    window.PORTFOLIO_MEDIA.setImgMedia(img, localPath, opts);
+    return;
+  }
+  img.src = mediaUrl(localPath, { width: opts.width || 480 });
+  if (opts.withFull !== false) {
+    img.setAttribute("data-full-src", mediaFull(localPath));
+  }
 }
 
 /** Dedicated roll page URL: optional `page` in film-archive.json, else film-{slug}.html from id album-{slug}. */
@@ -196,13 +210,10 @@ function renderHomeFilmRail(track, albums) {
     a.setAttribute("aria-label", `Open film roll: ${album.title}`);
     const img = document.createElement("img");
     const localPath = `${album.folder.replace(/\/?$/, "/")}${file}`;
-    img.src = filmPhotoUrl(album.folder, file);
-    img.setAttribute("data-full-src", mediaFull(localPath));
+    applyMediaImg(img, localPath, { role: "thumb" });
     img.alt = "";
     img.width = 400;
     img.height = 300;
-    img.loading = "lazy";
-    img.decoding = "async";
     a.appendChild(img);
     frag.appendChild(a);
   });
@@ -214,7 +225,6 @@ function renderFilmIndexGrid(grid, albums) {
   grid.innerHTML = "";
   albums.forEach((album) => {
     const coverFile = album.photos[0];
-    const coverSrc = coverFile ? filmPhotoUrl(album.folder, coverFile) : "";
     const a = document.createElement("a");
     a.className = "card card--project";
     a.id = album.id;
@@ -222,14 +232,13 @@ function renderFilmIndexGrid(grid, albums) {
 
     const panel = document.createElement("div");
     panel.className = "card-image placeholder";
-    if (coverSrc) {
+    if (coverFile) {
       panel.classList.remove("placeholder");
       panel.classList.add("card-image--photo");
       const img = document.createElement("img");
-      img.src = coverSrc;
+      const localPath = `${album.folder.replace(/\/?$/, "/")}${coverFile}`;
+      applyMediaImg(img, localPath, { role: "card" });
       img.alt = "";
-      img.loading = "lazy";
-      img.decoding = "async";
       img.addEventListener(
         "error",
         () => {
@@ -315,11 +324,8 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
       frame.className = "project-gallery-frame";
       const img = document.createElement("img");
       const localPath = `${album.folder.replace(/\/?$/, "/")}${file}`;
-      img.src = filmPhotoUrl(album.folder, file);
-      img.setAttribute("data-full-src", mediaFull(localPath));
+      applyMediaImg(img, localPath, { role: "thumb" });
       img.alt = `${album.title}: frame ${i + 1}`;
-      img.loading = "lazy";
-      img.decoding = "async";
       frame.appendChild(img);
       btn.appendChild(frame);
       wrap.appendChild(btn);
@@ -816,14 +822,11 @@ function hydrateProjectCardThumb(card, projectId) {
   const panel = card.querySelector(".card-image");
   if (!panel) return;
 
-  const wantHref = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.card ?? 600 });
   const existing = panel.querySelector("img");
-  if (existing) {
-    if (existing.dataset.mediaPath === src) {
-      panel.classList.remove("placeholder");
-      panel.classList.add("card-image--photo");
-      return;
-    }
+  if (existing?.dataset?.mediaPath === src) {
+    panel.classList.remove("placeholder");
+    panel.classList.add("card-image--photo");
+    return;
   }
 
   panel.classList.remove("placeholder");
@@ -831,11 +834,8 @@ function hydrateProjectCardThumb(card, projectId) {
   panel.textContent = "";
 
   const img = document.createElement("img");
-  img.dataset.mediaPath = src;
-  img.src = wantHref;
+  applyMediaImg(img, src, { role: "card" });
   img.alt = "";
-  img.loading = "lazy";
-  img.decoding = "async";
 
   img.addEventListener(
     "error",
@@ -882,10 +882,8 @@ function initPhotoAlbumCovers() {
     }
 
     const img = document.createElement("img");
-    img.src = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.card ?? 600 });
+    applyMediaImg(img, src, { role: "card" });
     img.alt = "";
-    img.loading = "lazy";
-    img.decoding = "async";
 
     img.addEventListener(
       "error",
@@ -1675,11 +1673,8 @@ function hydrateResumePhotos() {
       frame.className = "resume-event-photo-frame";
       frame.setAttribute("aria-label", cap ? `View larger: ${cap}` : "View larger photo");
       const img = document.createElement("img");
-      img.src = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.card ?? 600 });
-      img.setAttribute("data-full-src", mediaFull(src));
+      applyMediaImg(img, src, { role: "card" });
       img.alt = "";
-      img.loading = "lazy";
-      img.decoding = "async";
       img.draggable = false;
       img.addEventListener(
         "error",
