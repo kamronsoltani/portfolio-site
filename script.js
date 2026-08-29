@@ -56,10 +56,16 @@ function encodeAssetPath(rel) {
 
 /** Local `assets/…` path → Cloudinary CDN URL (or encoded local path if not configured). */
 function mediaUrl(localPath, opts) {
+  if (!localPath) return "";
+  if (/^https?:\/\//i.test(String(localPath))) return String(localPath);
   if (window.PORTFOLIO_MEDIA?.url) {
     return window.PORTFOLIO_MEDIA.url(localPath, opts);
   }
   return encodeAssetPath(localPath);
+}
+
+function heroMediaUrl(localPath) {
+  return mediaUrl(localPath, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 960 });
 }
 
 function mediaFull(localPath) {
@@ -768,7 +774,7 @@ async function initFilmArchiveRuntime() {
     FILM_ALBUM_COVER_SRC[album.id] = localCover;
     heroFilmSlidePatch?.(5 + i, {
       href: filmRollPageHref(album),
-      image: mediaUrl(localCover, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 }),
+      image: localCover,
       title: `${album.title}: film`,
       cta: "Open gallery →",
     });
@@ -1130,8 +1136,7 @@ function initHobbyHeroSlideshow() {
       slideCta.hidden = true;
     }
 
-    const src = photos[index];
-    const resolved = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 });
+    const resolved = heroMediaUrl(photos[index]);
     setSlideImage(resolved, shortLabel(activeKey));
     slidePlaceholder.textContent = shortLabel(activeKey);
 
@@ -1285,7 +1290,7 @@ function initHeroSlideshow() {
     [nextIdx, prevIdx].forEach((i) => {
       const local = slides[i].image;
       if (!local) return;
-      const url = mediaUrl(local, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 });
+      const url = heroMediaUrl(local);
       if (!url) return;
       const im = new Image();
       im.decoding = "async";
@@ -1300,7 +1305,7 @@ function initHeroSlideshow() {
     slideTitle.textContent = current.title;
     slidePlaceholder.textContent = current.short;
     if (slideCta) slideCta.textContent = current.cta || "Open →";
-    const resolved = mediaUrl(current.image, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 });
+    const resolved = heroMediaUrl(current.image);
     setSlideImage(resolved, current.short);
 
     [...dotsContainer.querySelectorAll(".hero-slideshow-dot")].forEach((dot, j) => {
