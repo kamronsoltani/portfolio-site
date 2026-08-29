@@ -488,6 +488,7 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   border: 1px solid var(--border);
   overflow: hidden;
   background: #ead5bd;
+  box-shadow: var(--shadow);
 }
 .hero-slide-link {
   display: flex;

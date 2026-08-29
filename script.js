@@ -26,6 +26,7 @@ if (menuButton && nav) {
  * Same URL as each project page’s main hero <img>. Keys match design-engineering card `id`.
  * Add an entry when you add a hero image on that project page.
  */
+/** Local asset paths; resolved through `mediaUrl()` at display time. */
 const PROJECT_HERO_SRC = {
   "project-mangrove-water": "assets/design/Mangrove/main image.png",
   "project-morphing-dress": "assets/design/Formaflow/display/mainphoto.jpeg",
@@ -47,7 +48,25 @@ const PROJECT_HERO_SRC = {
 /** Encode each path segment so spaces (e.g. `Visual Resume`) work in `src`. */
 function encodeAssetPath(rel) {
   if (!rel) return "";
+  if (window.PORTFOLIO_MEDIA?.encodeLocalPath) {
+    return window.PORTFOLIO_MEDIA.encodeLocalPath(rel);
+  }
   return rel.split("/").map((seg) => encodeURIComponent(seg)).join("/");
+}
+
+/** Local `assets/…` path → Cloudinary CDN URL (or encoded local path if not configured). */
+function mediaUrl(localPath, opts) {
+  if (window.PORTFOLIO_MEDIA?.url) {
+    return window.PORTFOLIO_MEDIA.url(localPath, opts);
+  }
+  return encodeAssetPath(localPath);
+}
+
+function mediaFull(localPath) {
+  if (window.PORTFOLIO_MEDIA?.full) {
+    return window.PORTFOLIO_MEDIA.full(localPath);
+  }
+  return encodeAssetPath(localPath);
 }
 
 /**
@@ -56,7 +75,7 @@ function encodeAssetPath(rel) {
  */
 const RESUME_PHOTO_SETS = {
   mangrove: [
-    { src: "assets/design/Mangrove/main%20image.png", cap: "Turi-Tap System Render" },
+    { src: "assets/design/Mangrove/main image.png", cap: "Turi-Tap System Render" },
     { src: "assets/design/Mangrove/turipump0.png", cap: "CAD Iteration" },
     { src: "assets/design/Mangrove/fieldtest1.jpg", cap: "Field Testing" },
   ],
@@ -66,34 +85,34 @@ const RESUME_PHOTO_SETS = {
     { src: "assets/design/Cal Aero SAE/manufacturing session.jpeg", cap: "Build and Integration" },
   ],
   ntu: [
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/Xie Ming.jpeg"), cap: "Poster Presentation" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/Certificate.jpeg"), cap: "Certificate" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320011.jpeg"), cap: "MBS" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320035.jpeg"), cap: "SG60" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000089320036.jpeg"), cap: "LADs" },
-    { src: encodeAssetPath("assets/images/Visual Resume/NTU/000097660007.jpeg"), cap: "Ce La Vie" },
+    { src: "assets/images/Visual Resume/NTU/Xie Ming.jpeg", cap: "Poster Presentation" },
+    { src: "assets/images/Visual Resume/NTU/Certificate.jpeg", cap: "Certificate" },
+    { src: "assets/images/Visual Resume/NTU/000089320011.jpeg", cap: "MBS" },
+    { src: "assets/images/Visual Resume/NTU/000089320035.jpeg", cap: "SG60" },
+    { src: "assets/images/Visual Resume/NTU/000089320036.jpeg", cap: "LADs" },
+    { src: "assets/images/Visual Resume/NTU/000097660007.jpeg", cap: "Ce La Vie" },
   ],
   siemens: [
-    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_0080.jpeg"), cap: "Venture Car Manufacturing" },
-    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_4691.jpeg"), cap: "ALC42" },
-    { src: encodeAssetPath("assets/images/Visual Resume/Siemens Mobility/IMG_6089.jpeg"), cap: "Intern Cohort" },
+    { src: "assets/images/Visual Resume/Siemens Mobility/IMG_0080.jpeg", cap: "Venture Car Manufacturing" },
+    { src: "assets/images/Visual Resume/Siemens Mobility/IMG_4691.jpeg", cap: "ALC42" },
+    { src: "assets/images/Visual Resume/Siemens Mobility/IMG_6089.jpeg", cap: "Intern Cohort" },
   ],
   globe: [
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4577.jpeg"), cap: "7/11" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4594.jpeg"), cap: "Fun Architecture" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4605.jpeg"), cap: "Night Market" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/IMG_4621.jpeg"), cap: "Night Market II" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/HTC Vive.jpeg"), cap: "HTC Vive" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/Group Phoro.jpeg"), cap: "CAPRI" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/group photo 2.jpeg"), cap: "HTC" },
-    { src: encodeAssetPath("assets/images/Visual Resume/GLOBE/group photo 3.jpeg"), cap: "TMU Hospital" },
+    { src: "assets/images/Visual Resume/GLOBE/IMG_4577.jpeg", cap: "7/11" },
+    { src: "assets/images/Visual Resume/GLOBE/IMG_4594.jpeg", cap: "Fun Architecture" },
+    { src: "assets/images/Visual Resume/GLOBE/IMG_4605.jpeg", cap: "Night Market" },
+    { src: "assets/images/Visual Resume/GLOBE/IMG_4621.jpeg", cap: "Night Market II" },
+    { src: "assets/images/Visual Resume/GLOBE/HTC Vive.jpeg", cap: "HTC Vive" },
+    { src: "assets/images/Visual Resume/GLOBE/Group Phoro.jpeg", cap: "CAPRI" },
+    { src: "assets/images/Visual Resume/GLOBE/group photo 2.jpeg", cap: "HTC" },
+    { src: "assets/images/Visual Resume/GLOBE/group photo 3.jpeg", cap: "TMU Hospital" },
   ],
 };
 
 /** Film archive album covers: updated when film-archive.json loads (fallback for first paint). */
 const FILM_ALBUM_COVER_SRC = {
   "album-yosemite": "assets/images/Yosemite/1.jpg",
-  "album-istanbul": encodeAssetPath("assets/images/Film Photos/Istanbul/1.jpeg"),
+  "album-istanbul": "assets/images/Film Photos/Istanbul/1.jpeg",
   "album-roll-05": "assets/film-rolls/roll-05/cover.svg",
 };
 
@@ -111,9 +130,11 @@ const FILM_EDIT_PASSCODE = "changeme";
 /** @type {null | (slideIndex: number, patch: { href?: string; image?: string; title?: string; cta?: string }) => void} */
 let heroFilmSlidePatch = null;
 
-function filmPhotoUrl(folder, file) {
+function filmPhotoUrl(folder, file, width) {
   const base = (folder || "").replace(/\/?$/, "/");
-  return `${base}${file}`;
+  const local = `${base}${file}`;
+  const w = width || (window.PORTFOLIO_MEDIA?.config?.widths?.thumb ?? 500);
+  return mediaUrl(local, { width: w });
 }
 
 /** Dedicated roll page URL: optional `page` in film-archive.json, else film-{slug}.html from id album-{slug}. */
@@ -174,7 +195,9 @@ function renderHomeFilmRail(track, albums) {
     a.href = href;
     a.setAttribute("aria-label", `Open film roll: ${album.title}`);
     const img = document.createElement("img");
+    const localPath = `${album.folder.replace(/\/?$/, "/")}${file}`;
     img.src = filmPhotoUrl(album.folder, file);
+    img.setAttribute("data-full-src", mediaFull(localPath));
     img.alt = "";
     img.width = 400;
     img.height = 300;
@@ -291,7 +314,9 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
       const frame = document.createElement("span");
       frame.className = "project-gallery-frame";
       const img = document.createElement("img");
+      const localPath = `${album.folder.replace(/\/?$/, "/")}${file}`;
       img.src = filmPhotoUrl(album.folder, file);
+      img.setAttribute("data-full-src", mediaFull(localPath));
       img.alt = `${album.title}: frame ${i + 1}`;
       img.loading = "lazy";
       img.decoding = "async";
@@ -733,10 +758,11 @@ async function initFilmArchiveRuntime() {
 
   albumsState.slice(0, 2).forEach((album, i) => {
     if (!album?.photos?.[0]) return;
-    FILM_ALBUM_COVER_SRC[album.id] = filmPhotoUrl(album.folder, album.photos[0]);
+    const localCover = `${album.folder.replace(/\/?$/, "/")}${album.photos[0]}`;
+    FILM_ALBUM_COVER_SRC[album.id] = localCover;
     heroFilmSlidePatch?.(5 + i, {
       href: filmRollPageHref(album),
-      image: filmPhotoUrl(album.folder, album.photos[0]),
+      image: mediaUrl(localCover, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 }),
       title: `${album.title}: film`,
       cta: "Open gallery →",
     });
@@ -744,6 +770,7 @@ async function initFilmArchiveRuntime() {
 
   renderHomeFilmRail(photosTrack, albumsState);
   renderFilmIndexGrid(indexGrid, albumsState);
+  window.PORTFOLIO_MEDIA?.upgradeStaticImages?.();
 
   if (singleId && singleMount) {
     function rerenderSingle() {
@@ -789,11 +816,10 @@ function hydrateProjectCardThumb(card, projectId) {
   const panel = card.querySelector(".card-image");
   if (!panel) return;
 
-  const wantHref = resolveDocRelativeUrl(src);
+  const wantHref = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.card ?? 600 });
   const existing = panel.querySelector("img");
   if (existing) {
-    const haveHref = resolveDocRelativeUrl(existing.getAttribute("src") || "");
-    if (haveHref && haveHref === wantHref) {
+    if (existing.dataset.mediaPath === src) {
       panel.classList.remove("placeholder");
       panel.classList.add("card-image--photo");
       return;
@@ -805,6 +831,7 @@ function hydrateProjectCardThumb(card, projectId) {
   panel.textContent = "";
 
   const img = document.createElement("img");
+  img.dataset.mediaPath = src;
   img.src = wantHref;
   img.alt = "";
   img.loading = "lazy";
@@ -855,7 +882,7 @@ function initPhotoAlbumCovers() {
     }
 
     const img = document.createElement("img");
-    img.src = src;
+    img.src = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.card ?? 600 });
     img.alt = "";
     img.loading = "lazy";
     img.decoding = "async";
@@ -874,65 +901,64 @@ function initPhotoAlbumCovers() {
 }
 
 /** Kamron name peek: one image in assets/images/peek/ */
-const HERO_PEEK_IMAGES = [encodeAssetPath("assets/images/peek/65041-1-0036.jpeg")];
+const HERO_PEEK_IMAGES = ["assets/images/peek/65041-1-0036.jpeg"];
 
 /**
  * Hobby carousel: folders under assets/images/ (Legos, Sourdough, Sacramento Kings, Van Hool, Transit Nerd).
- * encodeAssetPath handles spaces in folder names.
  */
 const HOBBY_SLIDES = {
   sourdough: {
     label: "Sourdough baker",
     photos: [
-      encodeAssetPath("assets/images/Sourdough/IMG_0756.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_3805.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_3815.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_5864.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_5906.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_6196.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_6512.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_6520.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_6526.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_6850.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_6860.jpeg"),
-      encodeAssetPath("assets/images/Sourdough/IMG_7287.jpeg"),
+      "assets/images/Sourdough/IMG_0756.jpeg",
+      "assets/images/Sourdough/IMG_3805.jpeg",
+      "assets/images/Sourdough/IMG_3815.jpeg",
+      "assets/images/Sourdough/IMG_5864.jpeg",
+      "assets/images/Sourdough/IMG_5906.jpeg",
+      "assets/images/Sourdough/IMG_6196.jpeg",
+      "assets/images/Sourdough/IMG_6512.jpeg",
+      "assets/images/Sourdough/IMG_6520.jpeg",
+      "assets/images/Sourdough/IMG_6526.jpeg",
+      "assets/images/Sourdough/IMG_6850.jpeg",
+      "assets/images/Sourdough/IMG_6860.jpeg",
+      "assets/images/Sourdough/IMG_7287.jpeg",
     ],
   },
   lego: {
     label: "Lego builder",
     photos: [
-      encodeAssetPath("assets/images/Legos/IMG_0878.jpeg"),
-      encodeAssetPath("assets/images/Legos/IMG_0880.jpeg"),
-      encodeAssetPath("assets/images/Legos/IMG_4542.jpeg"),
-      encodeAssetPath("assets/images/Legos/IMG_5990.jpeg"),
-      encodeAssetPath("assets/images/Legos/IMG_7205.jpeg"),
-      encodeAssetPath("assets/images/Legos/img20231026_18350381.jpeg"),
+      "assets/images/Legos/IMG_0878.jpeg",
+      "assets/images/Legos/IMG_0880.jpeg",
+      "assets/images/Legos/IMG_4542.jpeg",
+      "assets/images/Legos/IMG_5990.jpeg",
+      "assets/images/Legos/IMG_7205.jpeg",
+      "assets/images/Legos/img20231026_18350381.jpeg",
     ],
   },
   kings: {
     label: "Sacramento Kings fan",
     photos: [
-      encodeAssetPath("assets/images/Sacramento Kings/IMG_4073.jpeg"),
-      encodeAssetPath("assets/images/Sacramento Kings/IMG_4550.jpeg"),
-      encodeAssetPath("assets/images/Sacramento Kings/IMG_7555.jpeg"),
-      encodeAssetPath("assets/images/Sacramento Kings/IMG_8826.jpeg"),
+      "assets/images/Sacramento Kings/IMG_4073.jpeg",
+      "assets/images/Sacramento Kings/IMG_4550.jpeg",
+      "assets/images/Sacramento Kings/IMG_7555.jpeg",
+      "assets/images/Sacramento Kings/IMG_8826.jpeg",
     ],
   },
   ag300: {
     label: "Van Hool AG300 enthusiast",
-    photos: [encodeAssetPath("assets/images/Van Hool/hq720.jpg")],
+    photos: ["assets/images/Van Hool/hq720.jpg"],
   },
   transit: {
     label: "Transit nerd",
     photos: [
-      encodeAssetPath("assets/images/Transit Nerd/000015100013.jpeg"),
-      encodeAssetPath("assets/images/Transit Nerd/IMG_6089.jpeg"),
-      encodeAssetPath("assets/images/Transit Nerd/IMG_6693.jpeg"),
-      encodeAssetPath("assets/images/Transit Nerd/IMG_8193.jpeg"),
-      encodeAssetPath("assets/images/Transit Nerd/IMG_8202.jpeg"),
-      encodeAssetPath("assets/images/Transit Nerd/IMG_8378.jpeg"),
-      encodeAssetPath("assets/images/Transit Nerd/img20231026_18294278.jpeg"),
-      encodeAssetPath("assets/images/Transit Nerd/img20231026_18320794.jpeg"),
+      "assets/images/Transit Nerd/000015100013.jpeg",
+      "assets/images/Transit Nerd/IMG_6089.jpeg",
+      "assets/images/Transit Nerd/IMG_6693.jpeg",
+      "assets/images/Transit Nerd/IMG_8193.jpeg",
+      "assets/images/Transit Nerd/IMG_8202.jpeg",
+      "assets/images/Transit Nerd/IMG_8378.jpeg",
+      "assets/images/Transit Nerd/img20231026_18294278.jpeg",
+      "assets/images/Transit Nerd/img20231026_18320794.jpeg",
     ],
   },
 };
@@ -961,7 +987,8 @@ function initHeroNamePeek() {
   }
 
   function pickSrc() {
-    return HERO_PEEK_IMAGES[Math.floor(Math.random() * HERO_PEEK_IMAGES.length)];
+    const local = HERO_PEEK_IMAGES[Math.floor(Math.random() * HERO_PEEK_IMAGES.length)];
+    return mediaUrl(local, { width: 320 });
   }
 
   function flashPeek(forceSrc = "") {
@@ -1106,7 +1133,7 @@ function initHobbyHeroSlideshow() {
     }
 
     const src = photos[index];
-    const resolved = resolveDocRelativeUrl(src);
+    const resolved = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 });
     setSlideImage(resolved, shortLabel(activeKey));
     slidePlaceholder.textContent = shortLabel(activeKey);
 
@@ -1239,7 +1266,7 @@ function initHeroSlideshow() {
     slideMedia.classList.remove("no-photo");
     slideMedia.classList.toggle(
       "hero-slide-media--asset-toned",
-      src.includes("Smart-Goniometer") && src.includes("1.jpeg")
+      src.includes("Smart-Goniometer")
     );
     const probe = new Image();
     probe.decoding = "async";
@@ -1258,7 +1285,9 @@ function initHeroSlideshow() {
     const nextIdx = (index + 1) % slides.length;
     const prevIdx = (index - 1 + slides.length) % slides.length;
     [nextIdx, prevIdx].forEach((i) => {
-      const url = resolveDocRelativeUrl(slides[i].image);
+      const local = slides[i].image;
+      if (!local) return;
+      const url = mediaUrl(local, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 });
       if (!url) return;
       const im = new Image();
       im.decoding = "async";
@@ -1273,7 +1302,7 @@ function initHeroSlideshow() {
     slideTitle.textContent = current.title;
     slidePlaceholder.textContent = current.short;
     if (slideCta) slideCta.textContent = current.cta || "Open →";
-    const resolved = resolveDocRelativeUrl(current.image);
+    const resolved = mediaUrl(current.image, { width: window.PORTFOLIO_MEDIA?.config?.widths?.hero ?? 1200 });
     setSlideImage(resolved, current.short);
 
     [...dotsContainer.querySelectorAll(".hero-slideshow-dot")].forEach((dot, j) => {
@@ -1646,7 +1675,8 @@ function hydrateResumePhotos() {
       frame.className = "resume-event-photo-frame";
       frame.setAttribute("aria-label", cap ? `View larger: ${cap}` : "View larger photo");
       const img = document.createElement("img");
-      img.src = src;
+      img.src = mediaUrl(src, { width: window.PORTFOLIO_MEDIA?.config?.widths?.card ?? 600 });
+      img.setAttribute("data-full-src", mediaFull(src));
       img.alt = "";
       img.loading = "lazy";
       img.decoding = "async";
@@ -1702,7 +1732,11 @@ function ensureResumePhotoLightboxDelegation() {
       .map((fig) => {
         const img = fig.querySelector("img");
         const cap = fig.querySelector(".resume-event-photo-cap")?.textContent?.trim() || "";
-        return { src: img?.getAttribute("src") || "", alt: img?.getAttribute("alt") || "", caption: cap };
+        return {
+          src: img?.getAttribute("data-full-src") || img?.getAttribute("src") || "",
+          alt: img?.getAttribute("alt") || "",
+          caption: cap,
+        };
       })
       .filter((s) => s.src);
     const idx = figures.findIndex((fig) => fig.contains(frame));
@@ -2317,6 +2351,7 @@ initFilmArchiveRuntime()
     console.warn("Film archive:", err);
   })
   .finally(() => {
+    window.PORTFOLIO_MEDIA?.upgradeStaticImages?.();
     window.dispatchEvent(new Event("resize"));
   });
 

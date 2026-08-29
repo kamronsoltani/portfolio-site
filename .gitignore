@@ -1,5 +1,10 @@
 .DS_Store
 Thumbs.db
 
+# Cloudinary upload credentials (never commit)
+scripts/.env
+scripts/node_modules/
+scripts/.upload-manifest.json
+
 # GitHub blocks files >100MB; large raws — host on Vimeo/YouTube instead
 assets/design/Cal Aero SAE/CAN_9391.mp4
