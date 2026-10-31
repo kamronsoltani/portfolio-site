@@ -28,6 +28,7 @@ if (menuButton && nav) {
  */
 /** Local asset paths; resolved through `mediaUrl()` at display time. */
 const PROJECT_HERO_SRC = {
+  "project-tuhh-soft-robotics": "assets/design/TUHH-Soft-Robotics/hero.jpg",
   "project-mangrove-water": "assets/design/Mangrove/main image.png",
   "project-morphing-dress": "assets/design/Formaflow/display/mainphoto.jpeg",
   "project-smart-goniometer": "assets/design/Smart-Goniometer/1.jpeg",
@@ -772,7 +773,7 @@ async function initFilmArchiveRuntime() {
     if (!album?.photos?.[0]) return;
     const localCover = `${album.folder.replace(/\/?$/, "/")}${album.photos[0]}`;
     FILM_ALBUM_COVER_SRC[album.id] = localCover;
-    heroFilmSlidePatch?.(5 + i, {
+    heroFilmSlidePatch?.(6 + i, {
       href: filmRollPageHref(album),
       image: localCover,
       title: `${album.title}: film`,
@@ -1230,8 +1231,9 @@ function initHeroSlideshow() {
 
   if (!slideLink || !slideMedia || !slideTitle || !slidePlaceholder || !dotsContainer) return;
 
-  /** Slides 0–4: engineering. Slides 5–6: two most recent film rolls (patched from film-archive.json). */
+  /** Slides 0–5: engineering. Slides 6–7: two most recent film rolls (patched from film-archive.json). */
   const slides = [
+    { title: "MuM Soft Robotics Visualization", short: "Soft robotics", href: "project-tuhh-soft-robotics.html", image: PROJECT_HERO_SRC["project-tuhh-soft-robotics"], cta: "Open project →" },
     { title: "Mangrove Water", short: "Mangrove", href: "project-mangrove-water.html", image: PROJECT_HERO_SRC["project-mangrove-water"], cta: "Open project →" },
     { title: "FormaFlow Morphing Dress", short: "FormaFlow", href: "project-morphing-dress.html", image: PROJECT_HERO_SRC["project-morphing-dress"], cta: "Open project →" },
     { title: "LMKS V1 light meter", short: "LMKS", href: "project-lmks-v1.html", image: PROJECT_HERO_SRC["project-lmks-v1"], cta: "Open project →" },
