@@ -368,6 +368,17 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
 }
 
 function ensureFilmShuffleButton(onShuffle) {
+  const lead = document.querySelector(".film-page .film-page-lead");
+  if (!lead) return null;
+
+  let meta = lead.closest(".film-page-meta");
+  if (!meta) {
+    meta = document.createElement("div");
+    meta.className = "film-page-meta";
+    lead.parentNode.insertBefore(meta, lead);
+    meta.appendChild(lead);
+  }
+
   let btn = document.getElementById("filmShuffleBtn");
   if (!btn) {
     btn = document.createElement("button");
@@ -377,8 +388,9 @@ function ensureFilmShuffleButton(onShuffle) {
     btn.setAttribute("aria-label", "Shuffle photo order");
     btn.title = "Shuffle";
     btn.textContent = "⚄";
-    document.body.appendChild(btn);
   }
+  if (btn.parentElement !== meta) meta.appendChild(btn);
+
   btn.onclick = () => {
     btn.classList.remove("is-rolling");
     void btn.offsetWidth;

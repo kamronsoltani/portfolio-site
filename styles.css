@@ -770,9 +770,17 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   line-height: 1.2;
 }
 .film-page-lead {
-  margin: 0 0 10px;
+  margin: 0;
   max-width: 52ch;
   line-height: 1.45;
+}
+.film-page-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 0 0 10px;
+  max-width: 100%;
 }
 .photo-album--showcase {
   margin-top: clamp(28px, 4vw, 40px);
@@ -834,27 +842,23 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   }
 }
 
-/* Subtle shuffle dice — right edge, matches chunky chip language */
+/* Subtle shuffle dice — sits beside the roll description */
 .film-shuffle-btn {
-  position: fixed;
-  right: max(12px, calc((100vw - min(1280px, 94%)) / 2 - 4px));
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 40;
-  width: 42px;
-  height: 42px;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
   padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: calc(var(--radius) - 2px);
   background: var(--section-h2-fill);
-  box-shadow: var(--shadow);
+  box-shadow: 3px 3px 0 var(--shadow-deep);
   color: var(--text);
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   line-height: 1;
-  opacity: 0.72;
+  opacity: 0.78;
   transition: opacity 120ms linear, transform 85ms linear, box-shadow 85ms linear;
 }
 .film-shuffle-btn:hover,
@@ -862,35 +866,16 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   opacity: 1;
 }
 .film-shuffle-btn:active {
-  transform: translateY(-50%) translate(3px, 3px);
-  box-shadow: 3px 3px 0 var(--shadow-deep);
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow-deep);
 }
 .film-shuffle-btn.is-rolling {
   animation: diceRoll 420ms steps(4, end);
 }
 @keyframes diceRoll {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  50% { transform: translateY(-50%) rotate(12deg) translate3d(-1px, -2px, 0); }
-  100% { transform: translateY(-50%) rotate(0deg); }
-}
-@media (max-width: 720px) {
-  .film-shuffle-btn {
-    right: 10px;
-    bottom: 18px;
-    top: auto;
-    transform: none;
-  }
-  .film-shuffle-btn:active {
-    transform: translate(3px, 3px);
-  }
-  .film-shuffle-btn.is-rolling {
-    animation: diceRollMobile 420ms steps(4, end);
-  }
-  @keyframes diceRollMobile {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(12deg) translate3d(-1px, -2px, 0); }
-    100% { transform: rotate(0deg); }
-  }
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(14deg) translate3d(-1px, -1px, 0); }
+  100% { transform: rotate(0deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .film-shuffle-btn.is-rolling {
