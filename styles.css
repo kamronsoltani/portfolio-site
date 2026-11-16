@@ -777,12 +777,16 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   line-height: 1.45;
 }
 .film-page-meta {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   flex-wrap: nowrap;
   gap: 10px;
-  margin: 0 0 12px;
+  margin: 14px 0 12px;
   max-width: 100%;
+}
+.film-page-meta .film-page-lead {
+  margin: 0;
 }
 .photo-album--showcase {
   margin-top: clamp(28px, 4vw, 40px);
