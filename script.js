@@ -2348,6 +2348,13 @@ function initTransitTypingEggs() {
 }
 
 function initQuirkyMotion() {
+  document.querySelectorAll("main > .section, main > article.section").forEach((section) => {
+    section.classList.add("page-settle");
+  });
+  // Next frame so CSS sees .js-ready after page-settle classes exist.
+  requestAnimationFrame(() => {
+    document.documentElement.classList.add("js-ready");
+  });
 }
 
 initFilmArchiveRuntime()

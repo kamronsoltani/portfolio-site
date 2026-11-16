@@ -794,9 +794,9 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   font-size: 1.35rem;
   font-family: var(--headline-font);
 }
-/* Film roll pages: dense full-bleed masonry (natural aspect ratios, minimal gutter) */
+/* Film roll pages: showcase masonry — max 4 across so frames stay large */
 .film-page .film-page-inner {
-  width: min(1680px, 97%);
+  width: min(1480px, 96%);
 }
 .film-page .film-page-inner > .project-back,
 .film-page .film-page-inner > h1,
@@ -805,38 +805,33 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
 }
 .film-page [data-project-lightbox] .film-grid--masonry {
   column-count: 2;
-  column-gap: 10px;
+  column-gap: 14px;
   margin: 18px 0 0;
   padding: 0;
 }
-@media (min-width: 720px) {
+@media (min-width: 820px) {
   .film-page [data-project-lightbox] .film-grid--masonry {
     column-count: 3;
-    column-gap: 12px;
+    column-gap: 16px;
   }
 }
-@media (min-width: 1100px) {
+@media (min-width: 1280px) {
   .film-page [data-project-lightbox] .film-grid--masonry {
     column-count: 4;
-    column-gap: 12px;
-  }
-}
-@media (min-width: 1500px) {
-  .film-page [data-project-lightbox] .film-grid--masonry {
-    column-count: 5;
+    column-gap: 16px;
   }
 }
 .film-page [data-project-lightbox] .film-grid--masonry .film-tile-shell {
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
-  margin: 0 0 10px;
+  margin: 0 0 14px;
   display: block;
   width: 100%;
 }
-@media (min-width: 720px) {
+@media (min-width: 820px) {
   .film-page [data-project-lightbox] .film-grid--masonry .film-tile-shell {
-    margin: 0 0 12px;
+    margin: 0 0 16px;
   }
 }
 .film-page [data-project-lightbox] .film-grid--masonry .gallery-item.film-gallery-tile {
@@ -846,6 +841,8 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   display: block;
   border-radius: calc(var(--radius) - 2px);
   overflow: hidden;
+  position: relative;
+  background: var(--surface-muted);
 }
 .film-page [data-project-lightbox] .film-grid--masonry .gallery-item.film-gallery-tile img {
   width: 100%;
@@ -2774,6 +2771,125 @@ button.project-gallery-tile:active {
   }
   50% {
     background-position: 52% 48%;
+  }
+}
+
+/* --- Load / settle motion: short, chunky, Muni-warm (not floaty) --- */
+@keyframes ticketShimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes chunkSettle {
+  from {
+    opacity: 0;
+    transform: translate3d(5px, 5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes mediaReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(4px, 4px, 0) scale(0.985);
+    filter: saturate(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: none;
+  }
+}
+
+.media-shell-loading,
+.card-image.media-shell-loading,
+.gallery-item.media-shell-loading,
+.project-gallery-frame.media-shell-loading,
+.film-gallery-tile.media-shell-loading {
+  background-color: #f4e6d4;
+  background-image: linear-gradient(
+    110deg,
+    #f4e6d4 0%,
+    #f4e6d4 38%,
+    #ffe7c8 50%,
+    #f4e6d4 62%,
+    #f4e6d4 100%
+  );
+  background-size: 220% 100%;
+  animation: ticketShimmer 1.05s steps(6, end) infinite;
+}
+
+img.media-pending {
+  opacity: 0;
+}
+
+img.media-reveal {
+  opacity: 0;
+}
+
+img.media-reveal.is-revealed {
+  animation: mediaReveal 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+html.js-ready .page-settle > .container > :is(h1, h2, .section-lead, .section-head, .project-back, .hero-copy, .hero-panel, .cards, .preview-rail, .resume-shell, .film-archive-grid, .project-detail, .film-page-lead, [data-project-lightbox]),
+html.js-ready .page-settle > .container.film-page-inner > :is(.project-back, h1, .film-page-lead, [data-project-lightbox]),
+html.js-ready .page-settle > .container.project-detail > :is(.project-back, h1, .project-meta, .section-lead, .project-content-split) {
+  animation: chunkSettle 380ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
+}
+
+html.js-ready .page-settle > .container > :nth-child(1),
+html.js-ready .page-settle > .container.film-page-inner > :nth-child(1),
+html.js-ready .page-settle > .container.project-detail > :nth-child(1) {
+  animation-delay: 20ms;
+}
+html.js-ready .page-settle > .container > :nth-child(2),
+html.js-ready .page-settle > .container.film-page-inner > :nth-child(2),
+html.js-ready .page-settle > .container.project-detail > :nth-child(2) {
+  animation-delay: 70ms;
+}
+html.js-ready .page-settle > .container > :nth-child(3),
+html.js-ready .page-settle > .container.film-page-inner > :nth-child(3),
+html.js-ready .page-settle > .container.project-detail > :nth-child(3) {
+  animation-delay: 120ms;
+}
+html.js-ready .page-settle > .container > :nth-child(4),
+html.js-ready .page-settle > .container.film-page-inner > :nth-child(4),
+html.js-ready .page-settle > .container.project-detail > :nth-child(4) {
+  animation-delay: 160ms;
+}
+html.js-ready .page-settle > .container > :nth-child(n + 5),
+html.js-ready .page-settle > .container.film-page-inner > :nth-child(n + 5),
+html.js-ready .page-settle > .container.project-detail > :nth-child(n + 5) {
+  animation-delay: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-shell-loading,
+  .card-image.media-shell-loading,
+  .gallery-item.media-shell-loading,
+  .project-gallery-frame.media-shell-loading,
+  .film-gallery-tile.media-shell-loading {
+    animation: none;
+    background-image: none;
+  }
+  img.media-pending,
+  img.media-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+  html.js-ready .page-settle > .container > *,
+  html.js-ready .page-settle > .container.film-page-inner > *,
+  html.js-ready .page-settle > .container.project-detail > * {
+    animation: none !important;
   }
 }
 

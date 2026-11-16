@@ -24,9 +24,9 @@
       lightbox: "auto:best",
     },
     /** Responsive candidates for film masonry tiles (CSS px ≈ column width). */
-    filmSrcset: [480, 720, 960, 1200, 1600],
+    filmSrcset: [560, 800, 1100, 1400, 1800],
     filmSizes:
-      "(max-width: 719px) 47vw, (max-width: 1099px) 31vw, (max-width: 1499px) 23vw, 18vw",
+      "(max-width: 819px) 47vw, (max-width: 1279px) 31vw, 23vw",
   };
 
   const LAZY_ROOT_MARGIN = "420px 0px";
@@ -155,6 +155,7 @@
           const img = entry.target;
           const pending = img.dataset.mediaPending;
           if (!pending) return;
+          beginImageReveal(img);
           img.src = pending;
           if (img.dataset.mediaPendingSrcset) {
             img.srcset = img.dataset.mediaPendingSrcset;
@@ -165,13 +166,50 @@
             delete img.dataset.mediaPendingSizes;
           }
           delete img.dataset.mediaPending;
-          img.dataset.mediaLoaded = "1";
           lazyObserver.unobserve(img);
         });
       },
       { rootMargin: LAZY_ROOT_MARGIN, threshold: 0.01 }
     );
     return lazyObserver;
+  }
+
+  function mediaShell(img) {
+    return (
+      img.closest(
+        ".film-gallery-tile, .card-image, .gallery-item, .project-gallery-frame, .project-hero-main, .resume-event-photo-frame"
+      ) || img.parentElement
+    );
+  }
+
+  function beginImageReveal(img) {
+    if (!img || img.dataset.mediaRevealBound === "1") return;
+    img.dataset.mediaRevealBound = "1";
+    img.classList.add("media-reveal", "media-pending");
+    const shell = mediaShell(img);
+    shell?.classList.add("media-shell-loading");
+
+    const finish = () => {
+      img.classList.remove("media-pending");
+      img.classList.add("is-revealed");
+      shell?.classList.remove("media-shell-loading");
+      img.dataset.mediaLoaded = "1";
+    };
+
+    if (img.complete && img.naturalWidth > 0) {
+      finish();
+      return;
+    }
+
+    img.addEventListener("load", finish, { once: true });
+    img.addEventListener(
+      "error",
+      () => {
+        img.classList.remove("media-pending");
+        shell?.classList.remove("media-shell-loading");
+      },
+      { once: true }
+    );
   }
 
   /**
@@ -198,19 +236,21 @@
     else img.setAttribute("fetchpriority", "low");
 
     if (!enabled()) {
+      beginImageReveal(img);
       img.src = encodeLocalPath(normalized);
       return;
     }
 
     if (opts.eager || shouldLoadEager(img, role)) {
+      beginImageReveal(img);
       img.src = thumb;
       if (isFilm) applyFilmSrcset(img, normalized, quality);
-      img.dataset.mediaLoaded = "1";
       return;
     }
 
     const observer = getLazyObserver();
     if (!observer) {
+      beginImageReveal(img);
       img.src = thumb;
       if (isFilm) applyFilmSrcset(img, normalized, quality);
       return;
@@ -224,10 +264,13 @@
         .join(", ");
       img.dataset.mediaPendingSizes = CONFIG.filmSizes || "25vw";
     }
-    if (!img.getAttribute("src")) {
-      img.src =
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E";
+    beginImageReveal(img);
+    // Transparent pixel — avoids a wrong-aspect placeholder jump while shimmer shows.
+    if (!img.getAttribute("src") || img.src.startsWith("data:")) {
+      img.removeAttribute("src");
     }
+    img.classList.add("media-pending");
+    mediaShell(img)?.classList.add("media-shell-loading");
     observer.observe(img);
   }
 
