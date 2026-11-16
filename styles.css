@@ -771,15 +771,17 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
 }
 .film-page-lead {
   margin: 0;
-  max-width: 52ch;
+  max-width: none;
+  width: auto;
+  flex: 0 1 auto;
   line-height: 1.45;
 }
 .film-page-meta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 10px;
-  margin: 0 0 10px;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin: 0 0 12px;
   max-width: 100%;
 }
 .photo-album--showcase {
@@ -812,8 +814,7 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
 .film-page .film-page-inner {
   width: min(1280px, 94%);
 }
-.film-page .film-page-inner > .project-back,
-.film-page .film-page-lead {
+.film-page .film-page-inner > .project-back {
   width: min(1200px, 100%);
 }
 .film-page [data-project-lightbox] .film-grid--masonry {
@@ -842,11 +843,12 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   }
 }
 
-/* Subtle shuffle dice — sits beside the roll description */
+/* Subtle shuffle dice — inline after camera/film/date */
 .film-shuffle-btn {
   flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
+  margin: 0;
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -856,9 +858,9 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   background: var(--section-h2-fill);
   box-shadow: 3px 3px 0 var(--shadow-deep);
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1;
-  opacity: 0.78;
+  opacity: 0.8;
   transition: opacity 120ms linear, transform 85ms linear, box-shadow 85ms linear;
 }
 .film-shuffle-btn:hover,

@@ -375,7 +375,7 @@ function ensureFilmShuffleButton(onShuffle) {
   if (!meta) {
     meta = document.createElement("div");
     meta.className = "film-page-meta";
-    lead.parentNode.insertBefore(meta, lead);
+    lead.replaceWith(meta);
     meta.appendChild(lead);
   }
 
@@ -389,7 +389,11 @@ function ensureFilmShuffleButton(onShuffle) {
     btn.title = "Shuffle";
     btn.textContent = "⚄";
   }
-  if (btn.parentElement !== meta) meta.appendChild(btn);
+  // Keep dice immediately after the description text.
+  if (btn.previousElementSibling !== lead || btn.parentElement !== meta) {
+    meta.appendChild(lead);
+    meta.appendChild(btn);
+  }
 
   btn.onclick = () => {
     btn.classList.remove("is-rolling");
