@@ -269,9 +269,19 @@ function renderFilmIndexGrid(grid, albums) {
   });
 }
 
+function shuffleArray(items) {
+  const next = [...items];
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [next[i], next[j]] = [next[j], next[i]];
+  }
+  return next;
+}
+
 function renderFilmAlbumsMount(mount, albums, editMode, opts) {
   if (!mount) return;
   const omitHeading = Boolean(opts?.omitHeading);
+  const shufflePhotos = Boolean(opts?.shufflePhotos) && !editMode;
   mount.innerHTML = "";
   albums.forEach((album) => {
     const article = document.createElement("article");
@@ -300,7 +310,8 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
     grid.className = "film-grid film-grid--masonry";
     if (editMode) grid.classList.add("film-grid--edit");
 
-    album.photos.forEach((file, i) => {
+    const photos = shufflePhotos ? shuffleArray(album.photos || []) : album.photos || [];
+    photos.forEach((file, i) => {
       const wrap = document.createElement("div");
       wrap.className = "film-tile-shell";
       wrap.dataset.albumId = album.id;
@@ -330,8 +341,8 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
 
       const img = document.createElement("img");
       const localPath = `${album.folder.replace(/\/?$/, "/")}${file}`;
-      // First row (≈8 tiles across dense columns) loads eagerly for fast LCP.
-      applyMediaImg(img, localPath, { role: "film", eager: i < 8 });
+      // First row (~6 tiles at 3-across) loads eagerly for fast LCP.
+      applyMediaImg(img, localPath, { role: "film", eager: i < 6 });
       img.alt = `${album.title}: frame ${i + 1}`;
       tile.appendChild(img);
       wrap.appendChild(tile);
@@ -354,6 +365,28 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
     }
     mount.appendChild(article);
   });
+}
+
+function ensureFilmShuffleButton(onShuffle) {
+  let btn = document.getElementById("filmShuffleBtn");
+  if (!btn) {
+    btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = "filmShuffleBtn";
+    btn.className = "film-shuffle-btn";
+    btn.setAttribute("aria-label", "Shuffle photo order");
+    btn.title = "Shuffle";
+    btn.textContent = "⚄";
+    document.body.appendChild(btn);
+  }
+  btn.onclick = () => {
+    btn.classList.remove("is-rolling");
+    void btn.offsetWidth;
+    btn.classList.add("is-rolling");
+    onShuffle?.();
+    window.setTimeout(() => btn.classList.remove("is-rolling"), 450);
+  };
+  return btn;
 }
 
 function wireFilmEditDragDrop(mount, getAlbums, setAlbums, rerender) {
@@ -788,11 +821,16 @@ async function initFilmArchiveRuntime() {
     function rerenderSingle() {
       const al = albumsState.find((a) => a.id === singleId);
       if (!al) return;
-      renderFilmAlbumsMount(singleMount, [al], false, { omitHeading: true });
+      renderFilmAlbumsMount(singleMount, [al], false, {
+        omitHeading: true,
+        shufflePhotos: true,
+      });
       initProjectGalleryLightbox();
+      window.PORTFOLIO_MEDIA?.upgradeStaticImages?.();
       window.dispatchEvent(new Event("resize"));
     }
 
+    ensureFilmShuffleButton(rerenderSingle);
     rerenderSingle();
   }
 

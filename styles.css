@@ -752,18 +752,22 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
 .film-page .film-page-inner > .project-back {
   margin: 0 0 14px;
 }
+/* Match .section h2 chip — hug the title text, never stretch full width */
 .film-page .film-page-inner > h1 {
   display: inline-block;
-  margin: 0 0 6px;
-  padding: 6px 14px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 8px;
+  padding: 4px 10px;
   border: 1px solid var(--border);
-  background: #f8e3cf;
+  background: var(--section-h2-fill);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
-  font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.55rem, 2.4vw, 1.9rem);
   font-family: var(--headline-font);
   letter-spacing: -0.02em;
   font-weight: 700;
+  line-height: 1.2;
 }
 .film-page-lead {
   margin: 0 0 10px;
@@ -785,21 +789,22 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
 }
 .film-album-head h2 {
   display: inline-block;
+  width: fit-content;
+  max-width: 100%;
   margin: 0;
   padding: 4px 10px;
   border: 1px solid var(--border);
-  background: #f8e3cf;
+  background: var(--section-h2-fill);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
   font-size: 1.35rem;
   font-family: var(--headline-font);
 }
-/* Film roll pages: showcase masonry — max 4 across so frames stay large */
+/* Film roll pages: showcase masonry — 3 across max */
 .film-page .film-page-inner {
-  width: min(1480px, 96%);
+  width: min(1280px, 94%);
 }
 .film-page .film-page-inner > .project-back,
-.film-page .film-page-inner > h1,
 .film-page .film-page-lead {
   width: min(1200px, 100%);
 }
@@ -809,15 +814,9 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   margin: 18px 0 0;
   padding: 0;
 }
-@media (min-width: 820px) {
+@media (min-width: 780px) {
   .film-page [data-project-lightbox] .film-grid--masonry {
     column-count: 3;
-    column-gap: 16px;
-  }
-}
-@media (min-width: 1280px) {
-  .film-page [data-project-lightbox] .film-grid--masonry {
-    column-count: 4;
     column-gap: 16px;
   }
 }
@@ -829,9 +828,73 @@ h1 { margin: 0; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.16; letter
   display: block;
   width: 100%;
 }
-@media (min-width: 820px) {
+@media (min-width: 780px) {
   .film-page [data-project-lightbox] .film-grid--masonry .film-tile-shell {
     margin: 0 0 16px;
+  }
+}
+
+/* Subtle shuffle dice — right edge, matches chunky chip language */
+.film-shuffle-btn {
+  position: fixed;
+  right: max(12px, calc((100vw - min(1280px, 94%)) / 2 - 4px));
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--section-h2-fill);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 1.15rem;
+  line-height: 1;
+  opacity: 0.72;
+  transition: opacity 120ms linear, transform 85ms linear, box-shadow 85ms linear;
+}
+.film-shuffle-btn:hover,
+.film-shuffle-btn:focus-visible {
+  opacity: 1;
+}
+.film-shuffle-btn:active {
+  transform: translateY(-50%) translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--shadow-deep);
+}
+.film-shuffle-btn.is-rolling {
+  animation: diceRoll 420ms steps(4, end);
+}
+@keyframes diceRoll {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  50% { transform: translateY(-50%) rotate(12deg) translate3d(-1px, -2px, 0); }
+  100% { transform: translateY(-50%) rotate(0deg); }
+}
+@media (max-width: 720px) {
+  .film-shuffle-btn {
+    right: 10px;
+    bottom: 18px;
+    top: auto;
+    transform: none;
+  }
+  .film-shuffle-btn:active {
+    transform: translate(3px, 3px);
+  }
+  .film-shuffle-btn.is-rolling {
+    animation: diceRollMobile 420ms steps(4, end);
+  }
+  @keyframes diceRollMobile {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(12deg) translate3d(-1px, -2px, 0); }
+    100% { transform: rotate(0deg); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .film-shuffle-btn.is-rolling {
+    animation: none;
   }
 }
 .film-page [data-project-lightbox] .film-grid--masonry .gallery-item.film-gallery-tile {

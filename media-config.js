@@ -25,8 +25,7 @@
     },
     /** Responsive candidates for film masonry tiles (CSS px ≈ column width). */
     filmSrcset: [560, 800, 1100, 1400, 1800],
-    filmSizes:
-      "(max-width: 819px) 47vw, (max-width: 1279px) 31vw, 23vw",
+    filmSizes: "(max-width: 779px) 47vw, 31vw",
   };
 
   const LAZY_ROOT_MARGIN = "420px 0px";
