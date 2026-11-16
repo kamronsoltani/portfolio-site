@@ -7,15 +7,29 @@
     cloudName: "ybzqvvbv",
     baseFolder: "portfolio",
     widths: {
-      thumb: 280,
-      card: 480,
-      gallery: 640,
-      hero: 960,
-      lightbox: 1800,
+      thumb: 320,
+      card: 560,
+      gallery: 720,
+      film: 900,
+      hero: 1200,
+      lightbox: 2200,
     },
+    /** Per-role Cloudinary quality. Film uses good (not eco) so scans stay sharp. */
+    qualities: {
+      thumb: "auto:eco",
+      card: "auto",
+      gallery: "auto:good",
+      film: "auto:good",
+      hero: "auto:good",
+      lightbox: "auto:best",
+    },
+    /** Responsive candidates for film masonry tiles (CSS px ≈ column width). */
+    filmSrcset: [480, 720, 960, 1200, 1600],
+    filmSizes:
+      "(max-width: 719px) 47vw, (max-width: 1099px) 31vw, (max-width: 1499px) 23vw, 18vw",
   };
 
-  const LAZY_ROOT_MARGIN = "280px 0px";
+  const LAZY_ROOT_MARGIN = "420px 0px";
   let lazyObserver = null;
 
   function enabled() {
@@ -55,6 +69,10 @@
       .join("/");
   }
 
+  function roleQuality(role) {
+    return CONFIG.qualities[role] || "auto";
+  }
+
   function url(localPath, opts = {}) {
     const normalized = normalizeLocalPath(localPath);
     if (!normalized) return "";
@@ -77,11 +95,17 @@
   }
 
   function full(localPath) {
-    return url(localPath, { width: CONFIG.widths.lightbox });
+    return url(localPath, {
+      width: CONFIG.widths.lightbox,
+      quality: roleQuality("lightbox"),
+    });
   }
 
-  function thumbUrl(localPath, width) {
-    return url(localPath, { width: width || CONFIG.widths.thumb, quality: "auto:eco" });
+  function thumbUrl(localPath, width, quality) {
+    return url(localPath, {
+      width: width || CONFIG.widths.thumb,
+      quality: quality || roleQuality("thumb"),
+    });
   }
 
   function roleWidth(role) {
@@ -90,7 +114,10 @@
 
   function inferRole(img) {
     if (!img?.closest) return "gallery";
-    if (img.closest(".gallery-item, .film-grid, .preview-track")) return "thumb";
+    if (img.closest(".film-page .film-grid, .film-grid--masonry, .film-gallery-tile")) {
+      return "film";
+    }
+    if (img.closest(".gallery-item, .preview-track")) return "thumb";
     if (img.closest(".card-image, .resume-event-photo, .film-archive-grid")) return "card";
     if (img.closest(".project-gallery-tile, .project-gallery-grid")) return "gallery";
     if (img.closest(".project-hero-main, .hero-hobby-fill")) return "hero";
@@ -108,6 +135,15 @@
     }
   }
 
+  function applyFilmSrcset(img, normalized, quality) {
+    const widths = CONFIG.filmSrcset || [];
+    if (!widths.length) return;
+    img.srcset = widths
+      .map((w) => `${url(normalized, { width: w, quality })} ${w}w`)
+      .join(", ");
+    img.sizes = CONFIG.filmSizes || "25vw";
+  }
+
   function getLazyObserver() {
     if (lazyObserver) return lazyObserver;
     if (!("IntersectionObserver" in window)) return null;
@@ -120,6 +156,14 @@
           const pending = img.dataset.mediaPending;
           if (!pending) return;
           img.src = pending;
+          if (img.dataset.mediaPendingSrcset) {
+            img.srcset = img.dataset.mediaPendingSrcset;
+            delete img.dataset.mediaPendingSrcset;
+          }
+          if (img.dataset.mediaPendingSizes) {
+            img.sizes = img.dataset.mediaPendingSizes;
+            delete img.dataset.mediaPendingSizes;
+          }
           delete img.dataset.mediaPending;
           img.dataset.mediaLoaded = "1";
           lazyObserver.unobserve(img);
@@ -133,15 +177,18 @@
   /**
    * Apply Cloudinary thumb + full-size lightbox URL to an <img>.
    * Below-fold images defer network fetch until near viewport.
+   * Film tiles get responsive srcset for sharp retina without over-fetching.
    */
   function setImgMedia(img, localPath, opts = {}) {
     if (!img || !localPath) return;
 
     const role = opts.role || inferRole(img);
     const width = opts.width || roleWidth(role);
+    const quality = opts.quality || roleQuality(role);
     const normalized = normalizeLocalPath(localPath);
-    const thumb = thumbUrl(normalized, width);
+    const thumb = thumbUrl(normalized, width, quality);
     const fullSrc = full(normalized);
+    const isFilm = role === "film";
 
     img.dataset.mediaPath = normalized;
     img.setAttribute("data-full-src", fullSrc);
@@ -157,6 +204,7 @@
 
     if (opts.eager || shouldLoadEager(img, role)) {
       img.src = thumb;
+      if (isFilm) applyFilmSrcset(img, normalized, quality);
       img.dataset.mediaLoaded = "1";
       return;
     }
@@ -164,10 +212,18 @@
     const observer = getLazyObserver();
     if (!observer) {
       img.src = thumb;
+      if (isFilm) applyFilmSrcset(img, normalized, quality);
       return;
     }
 
     img.dataset.mediaPending = thumb;
+    if (isFilm) {
+      const widths = CONFIG.filmSrcset || [];
+      img.dataset.mediaPendingSrcset = widths
+        .map((w) => `${url(normalized, { width: w, quality })} ${w}w`)
+        .join(", ");
+      img.dataset.mediaPendingSizes = CONFIG.filmSizes || "25vw";
+    }
     if (!img.getAttribute("src")) {
       img.src =
         "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E";

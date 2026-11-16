@@ -140,11 +140,11 @@ let heroFilmSlidePatch = null;
 function filmPhotoUrl(folder, file, width) {
   const base = (folder || "").replace(/\/?$/, "/");
   const local = `${base}${file}`;
-  const w = width || (window.PORTFOLIO_MEDIA?.config?.widths?.thumb ?? 280);
+  const w = width || (window.PORTFOLIO_MEDIA?.config?.widths?.film ?? 900);
   if (window.PORTFOLIO_MEDIA?.thumbUrl) {
-    return window.PORTFOLIO_MEDIA.thumbUrl(local, w);
+    return window.PORTFOLIO_MEDIA.thumbUrl(local, w, "auto:good");
   }
-  return mediaUrl(local, { width: w, quality: "auto:eco" });
+  return mediaUrl(local, { width: w, quality: "auto:good" });
 }
 
 function applyMediaImg(img, localPath, opts = {}) {
@@ -297,7 +297,7 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
     lb.setAttribute("data-project-lightbox", "");
 
     const grid = document.createElement("div");
-    grid.className = "film-grid";
+    grid.className = "film-grid film-grid--masonry";
     if (editMode) grid.classList.add("film-grid--edit");
 
     album.photos.forEach((file, i) => {
@@ -322,23 +322,22 @@ function renderFilmAlbumsMount(mount, albums, editMode, opts) {
         wrap.appendChild(removeBtn);
       }
 
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "project-gallery-tile";
-      btn.setAttribute("aria-label", `Open ${album.title} photo ${i + 1} full size`);
+      const tile = document.createElement("a");
+      tile.href = "#";
+      tile.className =
+        "gallery-item gallery-item--thumb rail-tile film-gallery-tile project-gallery-tile";
+      tile.setAttribute("aria-label", `Open ${album.title} photo ${i + 1} full size`);
 
-      const frame = document.createElement("span");
-      frame.className = "project-gallery-frame";
       const img = document.createElement("img");
       const localPath = `${album.folder.replace(/\/?$/, "/")}${file}`;
-      applyMediaImg(img, localPath, { role: "thumb" });
+      // First row (≈8 tiles across dense columns) loads eagerly for fast LCP.
+      applyMediaImg(img, localPath, { role: "film", eager: i < 8 });
       img.alt = `${album.title}: frame ${i + 1}`;
-      frame.appendChild(img);
-      btn.appendChild(frame);
-      wrap.appendChild(btn);
+      tile.appendChild(img);
+      wrap.appendChild(tile);
 
       if (editMode) {
-        btn.addEventListener("click", (e) => {
+        tile.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
         });
@@ -2252,7 +2251,10 @@ function initProjectGalleryLightbox() {
 
     heroTrigger?.addEventListener("click", () => open(slideIndexToListIndex(0)));
     tiles.forEach((tile, i) => {
-      tile.addEventListener("click", () => open(tileToListIndex.get(i) ?? 0));
+      tile.addEventListener("click", (e) => {
+        e.preventDefault();
+        open(tileToListIndex.get(i) ?? 0);
+      });
     });
     vimeoTiles.forEach((wrap, vi) => {
       const go = () => open(slideIndexToListIndex(heroSlides.length + vi));
